@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Git & GitHub Workshop",
+  title: "Prashant Gupta",
   description:
-    "Hands-on Git and GitHub workshops to learn version control and collaboration.",
+    "Explore the portfolio of Prashant G, a Software Engineer. View featured case studies, creative work, and ways to get in touch.",
 };
 
 export default function RootLayout({
