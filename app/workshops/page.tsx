@@ -1,10 +1,9 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  GitBranch,
-} from "lucide-react";
+import { ArrowUpRight, } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import {FaGithub} from "react-icons/fa";
 import TestimonialMarquee from "@/components/TestimonialMarquee";
+import { prashWorkshops } from "@/data/workshop/details";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -18,28 +17,12 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-const workshops = [
-  {
-    number: "01",
-    title: "Git & GitHub Workshop",
-    description:
-      "Learn Git fundamentals and practice a complete GitHub workflow through a hands-on collaborative project.",
-    topics: [
-      "Git fundamentals",
-      "Branches & commits",
-      "GitHub & Pull Requests",
-      "Collaboration workflow",
-    ],
-    icon: GitBranch,
-    status: "Available",
-    href: "https://forms.gle/k4rPe4g6AeVd4WDW8"
-  },
-];
+const workshops = prashWorkshops;
 
 export default function WorkshopsPage() {
   return (
     <div
-      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-[family-name:var(--font-sans)]`}
+      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-sans`}
     >
       <section className="w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
@@ -79,7 +62,7 @@ export default function WorkshopsPage() {
 
                     <div className="flex items-center gap-3">
                       <span
-                        className={`rounded-full px-3 py-1 font-[family-name:var(--font-mono)] text-[10px] ${
+                        className={`rounded-full px-3 py-1 font-mono text-[10px] ${
                           isAvailable
                             ? "bg-[#E4EFEA] text-[#1F6F5C]"
                             : "bg-[#F6F6F3] text-[#7A7F83]"
@@ -88,7 +71,7 @@ export default function WorkshopsPage() {
                         {workshop.status}
                       </span>
 
-                      <span className="font-[family-name:var(--font-mono)] text-[11px] text-[#7A7F83]">
+                      <span className="font-mono text-[11px] text-[#7A7F83]">
                         {workshop.number}
                       </span>
                     </div>
@@ -107,7 +90,7 @@ export default function WorkshopsPage() {
 
                   {/* Topics */}
                   <div className="mt-7">
-                    <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                       You&apos;ll work with
                     </p>
 
@@ -115,7 +98,7 @@ export default function WorkshopsPage() {
                       {workshop.topics.map((topic) => (
                         <span
                           key={topic}
-                          className="rounded-full bg-[#F6F6F3] px-3 py-1.5 font-[family-name:var(--font-mono)] text-[10px] text-[#565B60]"
+                          className="rounded-full bg-[#F6F6F3] px-3 py-1.5 font-mono text-[10px] text-[#565B60]"
                         >
                           {topic}
                         </span>
@@ -129,13 +112,13 @@ export default function WorkshopsPage() {
                       <Link
                         href={workshop.href}
                         target="_blank"
-                        className="inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
+                        className="inline-flex items-center gap-2 font-mono text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
                       >
                         Explore workshop
                         <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </Link>
                     ) : (
-                      <span className="font-[family-name:var(--font-mono)] text-[12px] text-[#9A9D9F]">
+                      <span className="font-mono text-[12px] text-[#9A9D9F]">
                         Details coming soon
                       </span>
                     )}
@@ -149,7 +132,7 @@ export default function WorkshopsPage() {
           <div className="mt-20 border-t border-[#DEDFDA] pt-14 sm:mt-24">
             <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
               <div>
-                <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                   The idea
                 </p>
 
@@ -194,7 +177,7 @@ export default function WorkshopsPage() {
 
               <Link
                 href="/workshops"
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-[family-name:var(--font-mono)] text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
+                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
               >
                 Join the next workshop
                 <ArrowUpRight className="h-4 w-4" />

@@ -1,13 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  BrainCircuit,
-  Code2,
-  GitBranch,
-  Sparkles,
-  Users,
-  Wrench,
-} from "lucide-react";
+import { ArrowUpRight, GitBranch, Sparkles, Users, Wrench } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import TestimonialMarquee from "@/components/TestimonialMarquee";
 
@@ -57,7 +49,7 @@ const approach = [
 export default function Home() {
   return (
     <div
-      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-[family-name:var(--font-sans)]`}
+      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-sans`}
     >
       {/* Hero */}
       {/* Hero */}
@@ -66,7 +58,7 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
             {/* Hero Content */}
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-[family-name:var(--font-mono)] text-[11px] text-[#565B60]">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-mono text-[11px] text-[#565B60]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
                 prash.coder / workshops
               </div>
@@ -87,7 +79,7 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link
                   href="/workshops"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-[family-name:var(--font-mono)] text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
                 >
                   Explore workshops
                   <ArrowUpRight className="h-4 w-4" />
@@ -95,7 +87,7 @@ export default function Home() {
 
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-[family-name:var(--font-mono)] text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
+                  className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-mono text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
                 >
                   My story
                 </Link>
@@ -104,7 +96,7 @@ export default function Home() {
 
             {/* Right Side Visual */}
             <div className="relative hidden lg:block">
-              <div className="relative mx-auto max-w-[430px]">
+              <div className="relative mx-auto max-w-107.5">
                 {/* Decorative background */}
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-[#C9DCD4]" />
                 <div className="absolute -bottom-8 -left-8 h-20 w-20 rounded-full border border-[#DEDFDA]" />
@@ -119,14 +111,14 @@ export default function Home() {
                       <span className="h-2.5 w-2.5 rounded-full bg-[#D5D6D1]" />
                     </div>
 
-                    <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#7A7F83]">
+                    <span className="font-mono text-[10px] text-[#7A7F83]">
                       workshop.sh
                     </span>
                   </div>
 
                   {/* Terminal Content */}
                   <div className="px-6 py-7">
-                    <div className="font-[family-name:var(--font-mono)] text-[12px] leading-7">
+                    <div className="font-mono text-[12px] leading-7">
                       <p className="text-[#7A7F83]">$ git status</p>
 
                       <p className="mt-1 text-[#565B60]">
@@ -150,7 +142,7 @@ export default function Home() {
                         </span>
 
                         <div>
-                          <p className="font-[family-name:var(--font-sans)] text-sm font-medium text-[#16191C]">
+                          <p className="font-sans text-sm font-medium text-[#16191C]">
                             Learn by doing
                           </p>
                           <p className="mt-0.5 text-[10px] text-[#7A7F83]">
@@ -165,7 +157,7 @@ export default function Home() {
                 {/* Floating Workshop Card */}
                 <div className="absolute -bottom-7 -right-6 w-48 rounded-xl border border-[#DEDFDA] bg-[#F6F6F3] p-4 shadow-sm">
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-wider text-[#7A7F83]">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-[#7A7F83]">
                       Current focus
                     </span>
 
@@ -183,7 +175,7 @@ export default function Home() {
                     <span className="h-1.5 flex-1 rounded-full bg-[#DEDFDA]" />
                   </div>
 
-                  <p className="mt-2 font-[family-name:var(--font-mono)] text-[9px] text-[#7A7F83]">
+                  <p className="mt-2 font-mono text-[9px] text-[#7A7F83]">
                     learn → practice → ship
                   </p>
                 </div>
@@ -194,7 +186,7 @@ export default function Home() {
           {/* Hero Meta */}
           <div className="mt-16 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-[#DEDFDA] pt-6 sm:grid-cols-3">
             <div>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                 Format
               </p>
               <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -203,7 +195,7 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                 Focus
               </p>
               <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -212,7 +204,7 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                 Philosophy
               </p>
               <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -228,7 +220,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div>
-              <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                 Explore
               </p>
 
@@ -244,7 +236,7 @@ export default function Home() {
 
             <Link
               href="/workshops"
-              className="inline-flex w-fit items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
+              className="inline-flex w-fit items-center gap-2 font-mono text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
             >
               View all workshops
               <ArrowUpRight className="h-4 w-4" />
@@ -265,7 +257,7 @@ export default function Home() {
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#7A7F83]">
+                    <span className="font-mono text-[10px] text-[#7A7F83]">
                       0{index + 1}
                     </span>
                   </div>
@@ -281,7 +273,7 @@ export default function Home() {
                   <Link
                     href={workshop.href}
                     target="_blank"
-                    className="mt-7 inline-flex items-center gap-1 font-[family-name:var(--font-mono)] text-[11px] font-medium text-[#1F6F5C]"
+                    className="mt-7 inline-flex items-center gap-1 font-mono text-[11px] font-medium text-[#1F6F5C]"
                   >
                     Explore
                     <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -298,7 +290,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                 The approach
               </p>
 
@@ -356,7 +348,7 @@ export default function Home() {
 
               <Link
                 href="/workshops"
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-[family-name:var(--font-mono)] text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
+                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
               >
                 Join the next workshop
                 <ArrowUpRight className="h-4 w-4" />
@@ -365,7 +357,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

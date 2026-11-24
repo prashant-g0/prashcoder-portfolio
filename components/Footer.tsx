@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -17,7 +17,7 @@ const mono = IBM_Plex_Mono({
 const links = [
   { href: "/", label: "Home" },
   { href: "/workshops", label: "Workshops" },
-  { href: "/testimonials", label: "Testimonials" },
+  { href: "/workshops/testimonials", label: "Testimonials" },
   { href: "/about", label: "About" },
 ];
 
@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr]">
           {/* Brand + Vision */}
           <div className="max-w-xl">
-            <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wider text-[#1F6F5C]">
+            <p className="font-mono text-xs uppercase tracking-wider text-[#1F6F5C]">
               prash.coder / workshop
             </p>
 
@@ -46,7 +46,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="lg:justify-self-end">
-            <p className="mb-5 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#7A7F83]">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-[#7A7F83]">
               Explore
             </p>
 
@@ -55,7 +55,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group flex w-fit items-center gap-1 font-[family-name:var(--font-mono)] text-[13px] text-[#565B60] transition hover:text-[#1F6F5C]"
+                  className="group flex w-fit items-center gap-1 font-mono text-[13px] text-[#565B60] transition hover:text-[#1F6F5C]"
                 >
                   {link.label}
 
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-col gap-4 border-t border-[#DEDFDA] pt-6 font-[family-name:var(--font-mono)] text-[11px] text-[#7A7F83] sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 border-t border-[#DEDFDA] pt-6 font-mono text-[11px] text-[#7A7F83] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} prash.coder</p>
 
           <div className="flex items-center gap-2">

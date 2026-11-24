@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Quote, Star, Users } from "lucide-react";
 
 import TestimonialCard from "@/components/TestimonialCard";
-import { testimonials } from "@/data/testimonials";
+import { testimonials } from "@/data/workshop/testimonials";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ export default function TestimonialsPage() {
 
   return (
     <div
-      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-[family-name:var(--font-sans)]`}
+      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-sans`}
     >
       <section className="w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-12">
         {/* Header */}
@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
                 <span className="ml-2 text-[#1F6F5C]">think.</span>
               </h1>
 
-              <p className="mt-4 max-w-[600px] text-[16px] leading-7 text-[#565B60]">
+              <p className="mt-4 max-w-150 text-[16px] leading-7 text-[#565B60]">
                 Notes from students after attending the workshop, shared in
                 their own words.
               </p>
@@ -48,7 +48,7 @@ export default function TestimonialsPage() {
                 <Users className="h-5 w-5 text-[#1F6F5C]" />
 
                 <div>
-                  <p className="font-[family-name:var(--font-mono)] text-xs text-[#7A7F83]">
+                  <p className="font-mono text-xs text-[#7A7F83]">
                     STUDENTS
                   </p>
                   <p className="text-lg font-semibold text-[#16191C]">
@@ -61,7 +61,7 @@ export default function TestimonialsPage() {
                 <Star className="h-5 w-5 fill-current text-[#1F6F5C]" />
 
                 <div>
-                  <p className="font-[family-name:var(--font-mono)] text-xs text-[#7A7F83]">
+                  <p className="font-mono text-xs text-[#7A7F83]">
                     AVG RATING
                   </p>
                   <p className="text-lg font-semibold text-[#16191C]">
@@ -97,7 +97,7 @@ export default function TestimonialsPage() {
         <div className="mx-auto mt-14 max-w-7xl sm:mt-16">
           <div className="relative overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA] px-6 py-8 sm:px-10 sm:py-10 lg:flex lg:items-center lg:justify-between lg:px-12">
             <div>
-              <div className="mb-3 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+              <div className="mb-3 flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
                 Next workshop
               </div>
@@ -106,7 +106,7 @@ export default function TestimonialsPage() {
                 Your turn to commit to it.
               </h2>
 
-              <p className="mt-3 max-w-[600px] text-[15px] leading-7 text-[#33373B]">
+              <p className="mt-3 max-w-150 text-[15px] leading-7 text-[#33373B]">
                 Join the next Git &amp; GitHub workshop and learn through the
                 same hands-on format, with live guidance from start to finish.
               </p>
