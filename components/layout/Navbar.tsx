@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { contact } from "@/data/prash/about";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -32,7 +33,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`${archivo.variable} ${mono.variable} border-b border-[#DEDFDA] bg-[#F6F6F3]`}
+      className={`${archivo.variable} ${mono.variable} sticky-navbar border-b border-[#DEDFDA]`}
     >
       <nav className="mx-auto w-full max-w-7xl px-5 py-4 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between">
@@ -42,7 +43,7 @@ export default function Navbar() {
             aria-label="Prashant Gupta portfolio home"
             onClick={() => setIsMenuOpen(false)}
           >
-            Prashant Gupta
+            {contact.name}
           </Link>
 
           {/* Desktop Navigation */}
