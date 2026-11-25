@@ -15,43 +15,43 @@ export const prashWorkshops = [
     tags: ["Git", "GitHub", "Collaboration"],
     icon: "FaGitHub",
     status: "Closed",
-    href: "https://prash-git-github.my.canva.site/",
+    href: "/workshops/git-github-workshop",
     registerLink: "https://forms.gle/k4rPe4g6AeVd4WDW8",
     date: "20th September, 2026",
     lessons: [
       {
         module: 1,
         label: "Getting Started with Git",
-        media: "",
+        mediaImageURL: "",
       },
       {
         module: 2,
         label: "Git Basics",
-        media: "",
+        mediaImageURL: "",
       },
       {
         module: 3,
         label: "History & Changes",
-        media: "",
+        mediaImageURL: "",
       },
       {
         module: 4,
         label: "GitHub Integration",
-        media: "",
+        mediaImageURL: "",
       },
       {
         module: 5,
         label: "Branching & Collaboration",
-        media: "",
+        mediaImageURL: "",
       },
       {
         module: 6,
         label: "Debugging & Real Workflow",
-        media: "",
+        mediaImageURL: "",
       },
     ],
     journey: {
-      presession: [
+      preSession: [
         "Install Git and create your GitHub account",
         "Follow the simple setup guide we'll provide",
         "Join the WhatsApp group for important updates",
@@ -76,19 +76,19 @@ export const prashWorkshops = [
         label: "Git Essentials Cheatsheet",
         description:
           "Quick-reference guide covering essential Git commands, what they do, and when to use them.",
-        media: "",
+        mediaImageURL: "",
       },
       {
         label: "Practice Worksheet",
         description:
           "Hands-on exercises designed to help you reinforce what you learn during the session.",
-        media: "",
+        mediaImageURL: "",
       },
       {
         label: "Modules",
         description:
           "Step-by-step modules guiding you from basics to real usage.",
-        media: "",
+        mediaImageURL: "",
       },
     ],
     faqs: [

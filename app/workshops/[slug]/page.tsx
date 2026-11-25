@@ -30,6 +30,12 @@ export default async function WorkshopDetailPage({
         {workshop.description}
       </p>
 
+      <div className="workshop-detail-meta">
+        <span>{workshop.date}</span>
+        <span>{workshop.totalSeats} seats</span>
+        <span>{workshop.status}</span>
+      </div>
+
       <div className="mt-10 flex flex-wrap gap-3">
         {workshop.status === "Closed" ? (
           <span className="inline-flex min-h-11 items-center rounded-md border border-[#d8dad4] px-4 font-mono text-xs text-[#686f73]">
@@ -41,12 +47,47 @@ export default async function WorkshopDetailPage({
             href={workshop.registerLink}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#176b58] px-5 font-mono text-xs text-white"
+            className="workshop-registration-button"
           >
             Registration <ArrowUpRight size={14} />
           </Link>
         ) : null}
       </div>
+
+      {workshop.lessons.length ? (
+        <section className="workshop-detail-section">
+          <p className="eyebrow">Session modules</p>
+          <div className="workshop-lessons">
+            {workshop.lessons.map((lesson) => (
+              <article key={lesson.module}><span>{String(lesson.module).padStart(2, "0")}</span><h2>{lesson.label}</h2></article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="workshop-detail-section">
+        <p className="eyebrow">The journey</p>
+        <div className="workshop-journey">
+          {([
+            ["Before", workshop.journey.preSession],
+            ["During", workshop.journey.live],
+            ["After", workshop.journey.postSession],
+          ] as const).map(([title, steps]) => (
+            <article key={title}><h2>{title}</h2><ul>{steps.map((step) => <li key={step}>{step}</li>)}</ul></article>
+          ))}
+        </div>
+      </section>
+
+      {workshop.resources.length ? (
+        <section className="workshop-detail-section">
+          <p className="eyebrow">Resources</p>
+          <div className="workshop-resources">
+            {workshop.resources.map((resource) => (
+              <article key={resource.label}><h2>{resource.label}</h2><p>{resource.description}</p></article>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <div className="mt-14 grid gap-px border border-[#d8dad4] bg-[#d8dad4] md:grid-cols-3">
         {workshop.journey.live.map((step, index) => (
@@ -76,7 +117,7 @@ export default async function WorkshopDetailPage({
         <section>
           <p className="font-mono text-[11px] uppercase text-[#686f73]">FAQ</p>
           <div className="mt-4 divide-y divide-[#d8dad4] border-y border-[#d8dad4]">
-            {workshop.faqs.slice(0, 3).map((faq) => (
+            {workshop.faqs.slice(0, 5).map((faq) => (
               <details key={faq.question} className="py-4">
                 <summary className="cursor-pointer text-sm font-medium">
                   {faq.question}

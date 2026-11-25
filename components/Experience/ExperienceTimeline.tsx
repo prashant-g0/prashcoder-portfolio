@@ -10,12 +10,17 @@ import {
 } from "@/data/prash/about";
 import Modal from "@/components/UI/Modal";
 import Reveal from "@/components/UI/Reveal";
+import CodingProfiles from "@/components/Profiles/CodingProfiles";
+import Certifications from "@/components/Experience/Certifications";
 
 export default function ExperienceTimeline() {
   const [selected, setSelected] = useState<WorkExperience | null>(null);
 
   return (
     <section id="experience" className="section-shell experience-section">
+      <div className="experience-profile-row">
+        <CodingProfiles compact />
+      </div>
       <Reveal>
         <div className="section-heading">
           <p className="eyebrow">Experience</p>
@@ -55,6 +60,7 @@ export default function ExperienceTimeline() {
         ))}
       </div>
 
+      <Certifications />
       <div className="portfolio-detail-grid">
         <Reveal mode="up" className="education-panel">
           <div id="about">

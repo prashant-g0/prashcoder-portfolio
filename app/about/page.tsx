@@ -4,18 +4,14 @@ import Link from "next/link";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 
 import { ArrowUpRight, Code2 } from "lucide-react";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaWhatsapp,
-  FaYoutube,
-  FaRegEnvelope,
-} from "react-icons/fa";
 
-import { contact } from "@/data/prash/about";
+import { aboutContent } from "@/data/prash/about";
+import Reveal from "@/components/UI/Reveal";
+import SocialLinks from "@/components/UI/SocialLinks";
 import { prashWorkshops } from "@/data/workshop/details";
 import { projects } from "@/data/prash/projects";
 import { getLatestProjects } from "@/data/prash/selectors";
+import CodingProfiles from "@/components/Profiles/CodingProfiles";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -31,15 +27,6 @@ const mono = IBM_Plex_Mono({
 
 const latestProjects = getLatestProjects(projects);
 const workshops = prashWorkshops;
-const socials = contact.socialLinks;
-const socialIcons = {
-  FaLinkedin,
-  FaInstagram,
-  FaYoutube,
-  FaWhatsapp,
-  FaRegEnvelope,
-};
-
 export default function AboutPage() {
   return (
     <div
@@ -47,17 +34,21 @@ export default function AboutPage() {
     >
       <section className="w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-15">
         <div className="mx-auto max-w-7xl">
-          {/* Page Intro */}
-          <div className="max-w-5xl">
-            <h1 className="text-4xl font-semibold tracking-tight text-[#16191C] sm:text-5xl lg:text-[56px]">
-              Meet the person behind{" "}
-              <span className="text-[#1F6F5C]"> curious mind.</span>
-            </h1>
-          </div>
+          <Reveal mode="up">
+            <div className="max-w-5xl">
+              <h1 className="text-4xl font-semibold tracking-tight text-[#16191C] sm:text-5xl lg:text-[56px]">
+                {aboutContent.heading}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#565B60]">
+                {aboutContent.introduction}
+              </p>
+            </div>
+          </Reveal>
 
           {/* Story */}
           <div className="mt-14 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
             {/* Profile */}
+            <Reveal mode="left">
             <div className="rounded-2xl border border-[#DEDFDA] bg-white p-6 sm:p-8">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-[#E4EFEA]">
                 {/* Replace with your actual image */}
@@ -83,82 +74,38 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Socials */}
-              <div className="mt-6 flex gap-2 border-t border-[#DEDFDA] pt-6">
-                {socials.map((social) => {
-                  const Icon =
-                    socialIcons[social.icon as keyof typeof socialIcons] ??
-                    FaWhatsapp;
-
-                  return (
-                    <div key={social.label} className="group relative">
-                      <Link
-                        href={social.href}
-                        aria-label={social.label}
-                        target="_blank"
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#DEDFDA] bg-[#F6F6F3] text-[#565B60] transition hover:border-[#1F6F5C] hover:bg-[#E4EFEA] hover:text-[#1F6F5C]"
-                      >
-                        <Icon className="h-4 w-4" />
-                      </Link>
-
-                      {/* Tooltip */}
-                      <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 translate-y-1 opacity-0 whitespace-nowrap rounded-md bg-[#16191C] px-2 py-1 font-mono text-[9px] text-white transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
-                        {social.label}
-                      </span>
-                    </div>
-                  );
-                })}
+              <div className="mt-6 border-t border-[#DEDFDA] pt-6">
+                <SocialLinks />
               </div>
 
               {/* Personal line */}
               <div className="mt-6 rounded-xl bg-[#F6F6F3] p-5">
                 <Code2 className="h-4 w-4 text-[#1F6F5C]" />
                 <p className="mt-3 text-[14px] font-medium leading-6 text-[#33373B]">
-                  &quot;You can&apos;t keep doing the same things and expect
-                  extraordinary results.&quot;
+                  &quot;{aboutContent.quote}&quot;
                 </p>
               </div>
             </div>
+            </Reveal>
 
             {/* Story */}
+            <Reveal mode="right">
             <div className="flex flex-col justify-start">
               <p className="font-mono text-[11px] uppercase tracking-wider text-[#7A7F83]">
                 My story
               </p>
 
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#16191C] sm:text-4xl">
-                Learning became more meaningful when I started sharing it.
-              </h2>
-
-              <div className="mt-7 space-y-5 text-[15px] leading-7 text-[#565B60]">
-                <p>
-                  I&apos;m a developer who enjoys understanding how things work,
-                  building projects, and experimenting with new technologies.
-                  Over time, I realised that learning becomes much more valuable
-                  when you can explain it, practice it, and build something with
-                  it.
-                </p>
-
-                <p>
-                  That idea is what led to{" "}
-                  <span className="font-medium text-[#16191C]">
-                    prash.coder Workshop
-                  </span>
-                  . It&apos;s a space for practical technical learning where
-                  workshops focus less on simply watching and more on actually
-                  doing.
-                </p>
-
-                <p>
-                  Whether it&apos;s Git and GitHub, web development, AI, or
-                  something completely new, the goal stays the same: break
-                  complex ideas into understandable pieces, work through them
-                  together, and leave with something you can say you built.
-                </p>
-              </div>
+              <Reveal mode="left">
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#16191C] sm:text-4xl">
+                  How I approach the work.
+                </h2>
+                <div className="mt-7 space-y-5 text-[15px] leading-7 text-[#565B60]">
+                  {aboutContent.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+              </Reveal>
 
               {/* Approach */}
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {/* <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border border-[#DEDFDA] bg-white p-5">
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                     Approach
@@ -185,7 +132,9 @@ export default function AboutPage() {
                     Build together
                   </p>
                 </div>
-              </div>
+              </div> */}
+
+              <CodingProfiles />
 
               {/* Latest Projects */}
               {latestProjects.length > 0 && (
@@ -251,9 +200,11 @@ export default function AboutPage() {
                 </div>
               )}
             </div>
+            </Reveal>
           </div>
 
           {/* Workshops */}
+          <Reveal mode="up">
           <div className="mt-24 border-t border-[#DEDFDA] pt-14 sm:mt-28">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
@@ -320,7 +271,7 @@ export default function AboutPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-20 overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA] sm:mt-24">
+          {/* <div className="mt-20 overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA] sm:mt-24">
             <div className="flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-12">
               <div>
                 <h2 className="text-2xl font-semibold tracking-tight text-[#16191C] sm:text-3xl">
@@ -341,7 +292,8 @@ export default function AboutPage() {
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
+          </div> */}
+          </Reveal>
         </div>
       </section>
     </div>

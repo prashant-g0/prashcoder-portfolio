@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import { ArrowUp, ArrowUpRight, Download } from "lucide-react";
+import Image from "next/image";
+import { ArrowUp, ArrowUpRight, Download, FileText, MapPin } from "lucide-react";
 import { contact } from "@/data/prash/about";
 import SocialLinks from "@/components/UI/SocialLinks";
 
@@ -12,7 +13,6 @@ const archivo = Archivo({
   weight: ["500", "600", "700"],
   variable: "--font-sans",
 });
-
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -29,88 +29,137 @@ const links = [
 
 export default function Footer() {
   const [cardStarted, setCardStarted] = useState(false);
+  const [resumeStarted, setResumeStarted] = useState(false);
+
   const downloadCard = () => {
     setCardStarted(true);
     window.setTimeout(() => setCardStarted(false), 1800);
   };
+
+  const resumeId = contact.resumeLink.match(/\/d\/([^/]+)/)?.[1];
+  const resumeDownloadLink = resumeId
+    ? `https://drive.google.com/uc?export=download&id=${resumeId}`
+    : contact.resumeLink;
+  const resumePreviewLink = resumeId
+    ? `https://drive.google.com/file/d/${resumeId}/preview`
+    : contact.resumeLink;
+  const mapPreviewLink = `https://www.openstreetmap.org/export/embed.html?bbox=${contact.location.coordinates.lng - 0.04}%2C${contact.location.coordinates.lat - 0.025}%2C${contact.location.coordinates.lng + 0.04}%2C${contact.location.coordinates.lat + 0.025}&layer=mapnik&marker=${contact.location.coordinates.lat}%2C${contact.location.coordinates.lng}`;
+  const mapsUrl = `https://www.google.com/maps?q=${contact.location.coordinates.lat},${contact.location.coordinates.lng}`;
+
+  const openAndDownloadResume = () => {
+    setResumeStarted(true);
+    window.open(contact.resumeLink, "_blank", "noopener,noreferrer");
+    const link = document.createElement("a");
+    link.href = resumeDownloadLink;
+    link.download = "Prashant-Gupta-Resume";
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => setResumeStarted(false), 1800);
+  };
+
   return (
-    <footer
-      className={`${archivo.variable} ${mono.variable} border-t border-[#DEDFDA] bg-[#F6F6F3]`}
-    >
-      <div className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 sm:py-10 lg:px-10">
-        {/* Brand + Navigation */}
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr]">
-          {/* Brand + Vision */}
-          <div className="max-w-xl">
-            <p className="font-mono text-xs uppercase tracking-wider text-[#1F6F5C]">
-              Prashant Gupta / developer
+    <footer className={`${archivo.variable} ${mono.variable} footer-shell`}>
+      <div className="footer-inner">
+        <section className="footer-cta-zone" aria-label="Closing actions">
+          <div className="footer-closing">
+            <p className="eyebrow">Stay in the loop</p>
+            <h2>Have something worth building?</h2>
+            <p>
+              Explore the work, take a closer look at the code, or start a
+              conversation.
             </p>
+          </div>
 
-            <h2 className="mt-5 mb-7 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-[#16191C] sm:text-4xl">
-              Build useful things.
-              <br />
-              <span className="text-[#1F6F5C]">Share what works.</span>
-            </h2>
-
-            <a
-              href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 font-mono text-xs text-[#565B60] hover:text-[#176b58]"
-            >
-              {contact.email} <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
+          <div className="footer-actions">
+            <div className="footer-card-action-wrap">
             <a
               href="/user/personal/card.png"
               download="Prashant-Gupta-Card.png"
               onClick={downloadCard}
-              className={`get-card-button ${cardStarted ? "is-downloading" : ""}`}
+              className={`footer-card-action ${cardStarted ? "is-downloading" : ""}`}
+              aria-label="Download Prashant Gupta's personal card"
             >
-              <span className="get-card-thumbnail">
+              <span className="footer-card-thumbnail" aria-hidden="true">
                 <span />
               </span>
-              <span>{cardStarted ? "Card collected" : "Get My Card"}</span>
-              <Download size={15} aria-hidden="true" />
+              <span className="footer-action-copy">
+                <small>{cardStarted ? "Collected" : "Personal card"}</small>
+                <strong>Get My Card</strong>
+              </span>
+              <Download size={18} aria-hidden="true" />
             </a>
+            <div className="footer-card-preview" aria-hidden="true">
+              <Image src="/user/personal/card.png" alt="" width={180} height={270} />
+            </div>
+            </div>
+
+            <div className="footer-resume-action-wrap">
+            <button
+              type="button"
+              onClick={openAndDownloadResume}
+              className={`footer-resume-action ${resumeStarted ? "is-opening" : ""}`}
+              aria-label="Open and download Prashant Gupta's resume"
+            >
+              <span className="footer-resume-icon" aria-hidden="true">
+                <FileText size={20} />
+              </span>
+              <span className="footer-action-copy">
+                <small>
+                  {resumeStarted ? "Opening & saving" : "Current resume"}
+                </small>
+                <strong>Get My Resume</strong>
+              </span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </button>
+            <div className="footer-resume-preview" aria-label="Resume preview">
+              <iframe src={resumePreviewLink} title="Resume preview" loading="lazy" />
+            </div>
+            </div>
+
+            <div className="footer-location-action-wrap">
+              <a href={mapsUrl} target="_blank" rel="noreferrer noopener" className="footer-location-action">
+                <span className="footer-location-icon"><MapPin size={20} /></span>
+                <span className="footer-action-copy"><small>{contact.location.city}, {contact.location.country}</small><strong>Visit Me</strong></span>
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <div className="footer-map-preview" aria-label={`Map preview of ${contact.location.city}`}>
+                <iframe src={mapPreviewLink} title={`Map of ${contact.location.city}`} loading="lazy" />
+              </div>
+            </div>
           </div>
+        </section>
 
-          {/* Navigation */}
-          <div className="lg:justify-self-end">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-wider text-[#7A7F83]">
-              Explore
-            </p>
+        <section
+          className="footer-contact-zone"
+          aria-label="Contact and social links"
+        >
+          <a href={`mailto:${contact.email}`} className="footer-email">
+            {contact.email}
+          </a>
+          <SocialLinks compact />
+        </section>
 
-            <nav className="flex flex-col gap-3">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="group flex w-fit items-center gap-1 font-mono text-[13px] text-[#565B60] transition hover:text-[#1F6F5C]"
-                >
-                  {link.label}
-
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="flex flex-col gap-4 border-t border-[#DEDFDA] pt-6 font-mono text-[11px] text-[#7A7F83] sm:flex-row sm:items-center sm:justify-between">
+        <div className="footer-utility-row">
           <p>
             © {new Date().getFullYear()} {contact.name}
           </p>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <SocialLinks compact />
-            <Link
-              href="#top"
-              aria-label="Back to top"
-              title="Back to top"
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-[#d8dad4] transition hover:border-[#176b58] hover:text-[#176b58]"
-            >
-              <ArrowUp className="h-4 w-4" />
-            </Link>
-          </div>
+          <nav aria-label="Footer navigation">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <Link
+            href="#top"
+            aria-label="Back to top"
+            title="Back to top"
+            className="footer-top-action"
+          >
+            <ArrowUp size={16} />
+          </Link>
         </div>
       </div>
     </footer>

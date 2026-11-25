@@ -16,6 +16,7 @@ export default function PersonalCard() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [transform, setTransform] = useState("rotateX(4deg) rotateY(-7deg)");
   const [highlight, setHighlight] = useState("35% 20%");
+  const [downloadStarted, setDownloadStarted] = useState(false);
 
   useEffect(() => {
     if (!expanded) return;
@@ -150,18 +151,8 @@ export default function PersonalCard() {
           className="personal-card-highlight"
           style={{ backgroundPosition: highlight }}
         />
-        <div className="personal-card-toolbar" aria-label="Card controls">
-          {expandedView ? (
-            <button
-              type="button"
-              onPointerDown={(event) => event.stopPropagation()}
-              onClick={() => setExpanded(false)}
-              aria-label="Minimize personal card"
-              title="Minimize card"
-            >
-              <Minimize2 size={16} />
-            </button>
-          ) : (
+        {!expandedView ? (
+          <div className="personal-card-toolbar" aria-label="Card controls">
             <button
               type="button"
               onPointerDown={(event) => event.stopPropagation()}
@@ -171,8 +162,8 @@ export default function PersonalCard() {
             >
               <Maximize2 size={16} />
             </button>
-          )}
-        </div>
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -208,6 +199,32 @@ export default function PersonalCard() {
             aria-label="Expanded personal card"
           >
             {renderCard(true)}
+            <div className="expanded-card-toolbar" aria-label="Expanded card actions">
+              <a
+                href="/user/personal/card.png"
+                download="Prashant-Gupta-Card.png"
+                onClick={() => {
+                  setDownloadStarted(true);
+                  window.setTimeout(() => setDownloadStarted(false), 1800);
+                }}
+                className={`expanded-card-action ${downloadStarted ? "is-downloading" : ""}`}
+                aria-label="Download personal card"
+                title="Download card"
+              >
+                <Download size={15} aria-hidden="true" />
+                <span>{downloadStarted ? "Downloaded" : "Download Card"}</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="expanded-card-action"
+                aria-label="Minimize personal card"
+                title="Minimize card"
+              >
+                <Minimize2 size={15} aria-hidden="true" />
+                <span>Minimize</span>
+              </button>
+            </div>
           </div>
         </div>
       ) : null}

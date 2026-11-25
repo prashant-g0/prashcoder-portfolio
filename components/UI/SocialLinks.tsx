@@ -27,6 +27,7 @@ export default function SocialLinks({
               rel="noreferrer"
               aria-label={social.label}
               className="social-link"
+              style={{ "--social-color": social.color } as React.CSSProperties}
             >
               <Icon size={16} aria-hidden="true" />
             </Link>

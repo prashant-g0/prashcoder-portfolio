@@ -18,8 +18,8 @@ export default function RoleRotator() {
   }, [roles.length]);
 
   return (
-    <p className="role-rotator" aria-live="polite" aria-label={roles[index]}>
+    <span className="role-rotator" aria-live="polite" aria-label={roles[index]}>
       <span key={roles[index]}>{roles[index]}</span>
-    </p>
+    </span>
   );
 }
