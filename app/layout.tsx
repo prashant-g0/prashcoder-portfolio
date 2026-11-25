@@ -22,9 +22,34 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Prashant Gupta",
+  title: "Prashant Gupta | Software Developer & Builder",
   description:
-    "Explore the portfolio of Prashant G, a Software Engineer. View featured case studies, creative work, and ways to get in touch.",
+    "I'm Prashant Gupta, a software developer building full-stack applications, backend systems, and practical AI-powered experiences. Explore my projects, experience, and work.",
+
+  openGraph: {
+    title: "Prashant Gupta | Software Developer & Builder",
+    description:
+      "Software, systems, and ideas brought to life. Explore projects, engineering experience, and things I've built.",
+    url: "https://prashg0.vercel.app",
+    siteName: "Prashant Gupta",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Prashant Gupta - Software Developer Portfolio",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Prashant Gupta | Software Developer & Builder",
+    description:
+      "Building full-stack products, backend systems, and practical AI experiences. Explore my work and projects.",
+    images: ["/opengraph-image.jpg"],
+  },
 };
 
 export default function RootLayout({
