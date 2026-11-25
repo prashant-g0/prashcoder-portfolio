@@ -4,11 +4,18 @@ import Link from "next/link";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 
 import { ArrowUpRight, Code2 } from "lucide-react";
-import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaWhatsapp,
+  FaYoutube,
+  FaRegEnvelope,
+} from "react-icons/fa";
 
 import { contact } from "@/data/prash/about";
 import { prashWorkshops } from "@/data/workshop/details";
 import { projects } from "@/data/prash/projects";
+import { getLatestProjects } from "@/data/prash/selectors";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -22,7 +29,7 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-const latestProjects = projects;
+const latestProjects = getLatestProjects(projects);
 const workshops = prashWorkshops;
 const socials = contact.socialLinks;
 const socialIcons = {
@@ -30,6 +37,7 @@ const socialIcons = {
   FaInstagram,
   FaYoutube,
   FaWhatsapp,
+  FaRegEnvelope,
 };
 
 export default function AboutPage() {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { prashWorkshops } from "@/data/workshop/details";
+import WorkshopBackButton from "@/components/workshop/WorkshopBackButton";
 
 export function generateStaticParams() {
   return prashWorkshops.map((workshop) => ({ slug: workshop.slug }));
@@ -18,7 +19,8 @@ export default async function WorkshopDetailPage({
 
   return (
     <article className="mx-auto w-[calc(100%-40px)] max-w-7xl py-16 sm:py-20">
-      <p className="font-mono text-[11px] uppercase tracking-wider text-[#176b58]">
+      <WorkshopBackButton />
+      <p className="mt-8 font-mono text-[11px] uppercase tracking-wider text-[#176b58]">
         Workshop {workshop.number}
       </p>
       <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight sm:text-6xl">

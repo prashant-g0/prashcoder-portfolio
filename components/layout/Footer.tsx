@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Download } from "lucide-react";
 import { contact } from "@/data/prash/about";
+import SocialLinks from "@/components/UI/SocialLinks";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -24,6 +28,11 @@ const links = [
 ];
 
 export default function Footer() {
+  const [cardStarted, setCardStarted] = useState(false);
+  const downloadCard = () => {
+    setCardStarted(true);
+    window.setTimeout(() => setCardStarted(false), 1800);
+  };
   return (
     <footer
       className={`${archivo.variable} ${mono.variable} border-t border-[#DEDFDA] bg-[#F6F6F3]`}
@@ -43,8 +52,23 @@ export default function Footer() {
               <span className="text-[#1F6F5C]">Share what works.</span>
             </h2>
 
-            <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 font-mono text-xs text-[#565B60] hover:text-[#176b58]">
+            <a
+              href={`mailto:${contact.email}`}
+              className="inline-flex items-center gap-2 font-mono text-xs text-[#565B60] hover:text-[#176b58]"
+            >
               {contact.email} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href="/user/personal/card.png"
+              download="Prashant-Gupta-Card.png"
+              onClick={downloadCard}
+              className={`get-card-button ${cardStarted ? "is-downloading" : ""}`}
+            >
+              <span className="get-card-thumbnail">
+                <span />
+              </span>
+              <span>{cardStarted ? "Card collected" : "Get My Card"}</span>
+              <Download size={15} aria-hidden="true" />
             </a>
           </div>
 
@@ -72,15 +96,18 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col gap-4 border-t border-[#DEDFDA] pt-6 font-mono text-[11px] text-[#7A7F83] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {contact.name}</p>
+          <p>
+            © {new Date().getFullYear()} {contact.name}
+          </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            {contact.socialLinks.slice(0, 4).map((social) => (
-              <Link key={social.label} href={social.href} target="_blank" rel="noreferrer" className="transition hover:text-[#176b58]">
-                {social.label}
-              </Link>
-            ))}
-            <Link href="#top" aria-label="Back to top" title="Back to top" className="flex h-9 w-9 items-center justify-center rounded-md border border-[#d8dad4] transition hover:border-[#176b58] hover:text-[#176b58]">
+            <SocialLinks compact />
+            <Link
+              href="#top"
+              aria-label="Back to top"
+              title="Back to top"
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-[#d8dad4] transition hover:border-[#176b58] hover:text-[#176b58]"
+            >
               <ArrowUp className="h-4 w-4" />
             </Link>
           </div>

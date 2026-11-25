@@ -164,30 +164,6 @@ export default function WorkshopsPage() {
               </div>
             </div>
           </div>
-
-          {/* CTA */}
-          <div className="mt-20 overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA] sm:mt-24">
-            <div className="flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-12">
-              <div>
-                <h2 className="text-2xl font-semibold tracking-tight text-[#16191C] sm:text-3xl">
-                  Ready to learn by doing?
-                </h2>
-
-                <p className="mt-3 max-w-xl text-[14px] leading-6 text-[#565B60]">
-                  Join the next workshop, build something real, and learn
-                  alongside other curious people.
-                </p>
-              </div>
-
-              <Link
-                href="/workshops"
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
-              >
-                Join the next workshop
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 

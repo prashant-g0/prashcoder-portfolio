@@ -33,6 +33,11 @@ export const contact = {
       href: "https://chat.whatsapp.com/BBpNmYztCzc6aB83Ih2HJC",
       icon: "FaWhatsapp",
     },
+    {
+      label: "Email",
+      href: "mailto:mail.prashantg0@gmail.com",
+      icon: "FaRegEnvelope",
+    },
   ],
 };
 
@@ -88,7 +93,8 @@ export const achievements = [
     position: "Subject Topper (C programming)",
     eventTitle: "Orientation Program'24",
     issuer: "Pimpri Chinchwad University",
-    description: "Earned the 'Subject Topper' distinction in C Programming by securing the top rank in a rigorous curriculum covering foundational computer science concepts and algorithmic problem-solving.",
+    description:
+      "Earned the 'Subject Topper' distinction in C Programming by securing the top rank in a rigorous curriculum covering foundational computer science concepts and algorithmic problem-solving.",
     media: [
       "https://drive.google.com/file/d/1HquPRRayoQVZOAx7uW9thNL8F52LuRuZ/view?usp=drive_link",
     ],
@@ -98,7 +104,8 @@ export const achievements = [
     position: "Runner-up",
     eventTitle: "Project Expo'24",
     issuer: "Pimpri Chinchwad University",
-    description: "Developed Bhojnalaya, a web application that prevents UPI payment screenshot fraud by generating a unique QR-coded digital bill upon verified payment, embedding order details, payment status, and a unique ID",
+    description:
+      "Developed Bhojnalaya, a web application that prevents UPI payment screenshot fraud by generating a unique QR-coded digital bill upon verified payment, embedding order details, payment status, and a unique ID",
     media: [
       "https://drive.google.com/file/d/1J9Eq3i_wDDlR9k6kn3rSALj6e2kbT9JF/view?usp=drive_link",
       "https://drive.google.com/file/d/1MzJ7qcEVPNzdoGTEorTXdX-rALBAfaX0/view?usp=drive_link",

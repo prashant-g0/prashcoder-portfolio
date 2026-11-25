@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
@@ -36,30 +36,13 @@ export default function Navbar() {
     >
       <nav className="mx-auto w-full max-w-7xl px-5 py-4 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3"
+            className="navbar-name"
             aria-label="Prashant Gupta portfolio home"
             onClick={() => setIsMenuOpen(false)}
           >
-            <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#D5D6D1] bg-white">
-              <Image
-                src="/icons/logo.png"
-                alt="Workshop logo"
-                fill
-                className="object-contain p-1"
-              />
-            </div>
-
-            <div>
-              <p className="font-sans text-[16px] font-bold leading-none text-[#16191C]">
-                Prashant Gupta
-              </p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-[#565B60]">
-                Developer
-              </p>
-            </div>
+            Prashant Gupta
           </Link>
 
           {/* Desktop Navigation */}
@@ -95,23 +78,11 @@ export default function Navbar() {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
           >
-            <div className="flex w-5 flex-col gap-1.5">
-              <span
-                className={`h-px w-full bg-[#16191C] transition-transform duration-200 ${
-                  isMenuOpen ? "translate-y-1 rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-px w-full bg-[#16191C] transition-opacity duration-200 ${
-                  isMenuOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`h-px w-full bg-[#16191C] transition-transform duration-200 ${
-                  isMenuOpen ? "-translate-y-1 -rotate-45" : ""
-                }`}
-              />
-            </div>
+            {isMenuOpen ? (
+              <X size={20} aria-hidden="true" />
+            ) : (
+              <Menu size={20} aria-hidden="true" />
+            )}
           </button>
         </div>
 
