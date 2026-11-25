@@ -1,11 +1,21 @@
 import Link from "next/link";
-import { ArrowUpRight, GitBranch, Sparkles, Users, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  DownloadIcon,
+  GitBranch,
+  // Sparkles,
+  // Users,
+  // Wrench,
+} from "lucide-react";
+import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
 import PersonalCard from "@/components/Hero/PersonalCard";
 import ProjectShowcase from "@/components/Projects/ProjectShowcase";
 import ExperienceTimeline from "@/components/Experience/ExperienceTimeline";
 import RoleRotator from "@/components/UI/RoleRotator";
+import { contact } from "@/data/prash/about";
+import { prashWorkshops } from "@/data/workshop/details";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -13,49 +23,42 @@ const archivo = Archivo({
   variable: "--font-sans",
 });
 
+const workshopIcons = { FaGitHub: FaGithub };
+
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono",
 });
 
-const workshops = [
-  {
-    title: "Git & GitHub",
-    description:
-      "Understand version control and learn how developers collaborate on real projects.",
-    icon: GitBranch,
-    href: "https://forms.gle/k4rPe4g6AeVd4WDW8",
-  },
-];
+const workshops = prashWorkshops;
 
-const approach = [
-  {
-    icon: Wrench,
-    title: "Hands-on",
-    description:
-      "Less theory, more doing. Every workshop gives you something practical to work with.",
-  },
-  {
-    icon: Users,
-    title: "Learn together",
-    description:
-      "Ask questions, make mistakes, solve problems, and learn alongside others.",
-  },
-  {
-    icon: Sparkles,
-    title: "Stay curious",
-    description:
-      "The goal isn't to know everything. It's to leave knowing how to keep learning.",
-  },
-];
+// const approach = [
+//   {
+//     icon: Wrench,
+//     title: "Hands-on",
+//     description:
+//       "Less theory, more doing. Every workshop gives you something practical to work with.",
+//   },
+//   {
+//     icon: Users,
+//     title: "Learn together",
+//     description:
+//       "Ask questions, make mistakes, solve problems, and learn alongside others.",
+//   },
+//   {
+//     icon: Sparkles,
+//     title: "Stay curious",
+//     description:
+//       "The goal isn't to know everything. It's to leave knowing how to keep learning.",
+//   },
+// ];
 
 export default function Home() {
   return (
     <div
       className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-sans`}
     >
-      {/* Hero */}
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#DEDFDA]">
         <div className="mx-auto flex min-h-[78vh] w-full max-w-7xl flex-col justify-center px-5 py-20 sm:px-8 lg:px-12 lg:py-15">
@@ -67,10 +70,9 @@ export default function Home() {
                 @prash.coder / developer
               </div>
 
-              <h1 className="max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight text-[#16191C] sm:text-6xl lg:text-[76px]">
-                Prashant Gupta,
-                <br />
-                <span className="text-[#1F6F5C]">developer &amp; builder.</span>
+              <h1 className="hero-headline">
+                <span>Prashant Gupta</span>
+                <span className="hero-headline-fixed">Building as a</span>
                 <RoleRotator />
               </h1>
 
@@ -81,12 +83,17 @@ export default function Home() {
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link
-                  href="#projects"
-                  className="hero-primary-button"
-                >
+                <Link href="#projects" className="hero-primary-button">
                   Explore projects
                   <ArrowUpRight className="h-4 w-4" />
+                </Link>
+
+                <Link
+                  href={`${contact.resumeLink}`}
+                  className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-mono text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
+                >
+                  Get My Resume
+                  <DownloadIcon className="h-4 w-4" />
                 </Link>
 
                 <Link
@@ -94,6 +101,7 @@ export default function Home() {
                   className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-mono text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
                 >
                   Get in touch
+                  <FaEnvelope className="h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -191,7 +199,7 @@ export default function Home() {
           </div>
 
           {/* Hero Meta */}
-          <div className="mt-16 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-[#DEDFDA] pt-6 sm:grid-cols-3">
+          {/* <div className="mt-16 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-[#DEDFDA] pt-6 sm:grid-cols-3">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                 Format
@@ -218,7 +226,7 @@ export default function Home() {
                 Learn by doing
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -255,8 +263,7 @@ export default function Home() {
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {workshops.map((workshop, index) => {
-              const Icon = workshop.icon;
-
+              const WorkshopIcon = workshopIcons[workshop.icon as keyof typeof workshopIcons] ?? FaGithub;
               return (
                 <article
                   key={workshop.title}
@@ -264,7 +271,7 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E4EFEA] text-[#1F6F5C]">
-                      <Icon className="h-5 w-5" />
+                      <WorkshopIcon className="h-5 w-5" />
                     </div>
 
                     <span className="font-mono text-[10px] text-[#7A7F83]">
@@ -296,7 +303,7 @@ export default function Home() {
       </section>
 
       {/* Approach */}
-      <section className="border-y border-[#DEDFDA] bg-white">
+      {/* <section className="border-y border-[#DEDFDA] bg-white">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
@@ -335,13 +342,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials */}
       <TestimonialMarquee />
 
       {/* CTA */}
-      <section className="w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
+      {/* <section className="w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA]">
             <div className="flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-12">
@@ -366,7 +373,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
