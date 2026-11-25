@@ -8,6 +8,7 @@ import { projects, type Projects } from "@/data/prash/projects";
 import { getLatestProjects } from "@/data/prash/selectors";
 import Modal from "@/components/UI/Modal";
 import Reveal from "@/components/UI/Reveal";
+import { FaGithub } from "react-icons/fa";
 
 export default function ProjectShowcase({
   preview = false,
@@ -36,11 +37,7 @@ export default function ProjectShowcase({
       </Reveal>
 
       <Reveal mode="left">
-        <button
-          type="button"
-          className="featured-project project-open"
-          onClick={() => setSelected(featured)}
-        >
+        <article className="featured-project project-open">
           <span className="featured-project-image">
             {featured.links.media ? (
               <Image
@@ -67,13 +64,37 @@ export default function ProjectShowcase({
                 <i key={technology}>{technology}</i>
               ))}
             </span>
-            <span className="project-actions">
-              <span>
+            <div className="project-link-row">
+              <button
+                type="button"
+                className="project-explore project-detail-link"
+                onClick={() => setSelected(featured)}
+              >
                 Explore project <ArrowUpRight size={15} />
-              </span>
-            </span>
+              </button>
+              {featured.links.live ? (
+                <Link
+                  href={featured.links.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-explore"
+                >
+                  Live <ArrowUpRight size={15} />
+                </Link>
+              ) : null}
+              {featured.links.github ? (
+                <Link
+                  href={featured.links.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-explore"
+                >
+                  <FaGithub size={15} /> GitHub
+                </Link>
+              ) : null}
+            </div>
           </span>
-        </button>
+        </article>
       </Reveal>
 
       {remaining.length ? (
@@ -84,11 +105,7 @@ export default function ProjectShowcase({
               delay={index * 70}
               key={project.id}
             >
-              <button
-                type="button"
-                className="project-entry project-open"
-                onClick={() => setSelected(project)}
-              >
+              <article className="project-entry project-open">
                 <span className="project-entry-image">
                   {project.links.media ? (
                     <Image
@@ -114,11 +131,37 @@ export default function ProjectShowcase({
                   <span className="project-entry-description">
                     {project.description}
                   </span>
-                  <span className="project-explore">
-                    Explore <ArrowUpRight size={14} />
-                  </span>
+                  <div className="project-link-row">
+                    <button
+                      type="button"
+                      className="project-explore project-detail-link"
+                      onClick={() => setSelected(project)}
+                    >
+                      Explore <ArrowUpRight size={14} />
+                    </button>
+                    {project.links.live ? (
+                      <Link
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-explore"
+                      >
+                        Live <ArrowUpRight size={14} />
+                      </Link>
+                    ) : null}
+                    {project.links.github ? (
+                      <Link
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-explore"
+                      >
+                        <FaGithub size={14} /> GitHub
+                      </Link>
+                    ) : null}
+                  </div>
                 </span>
-              </button>
+              </article>
             </Reveal>
           ))}
         </div>
