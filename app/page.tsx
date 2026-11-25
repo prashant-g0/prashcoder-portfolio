@@ -5,6 +5,7 @@ import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
 import PersonalCard from "@/components/Hero/PersonalCard";
 import ProjectShowcase from "@/components/Projects/ProjectShowcase";
 import ExperienceTimeline from "@/components/Experience/ExperienceTimeline";
+import RoleRotator from "@/components/UI/RoleRotator";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function Home() {
                 Prashant Gupta,
                 <br />
                 <span className="text-[#1F6F5C]">developer &amp; builder.</span>
+                <RoleRotator />
               </h1>
 
               <p className="mt-7 max-w-2xl text-[16px] leading-7 text-[#565B60] sm:text-lg">
@@ -81,14 +83,14 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link
                   href="#projects"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
+                  className="hero-primary-button"
                 >
                   Explore projects
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
 
                 <Link
-                  href="mailto:mail.prashantg0@gmail.com"
+                  href="/about"
                   className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-mono text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
                 >
                   Get in touch
@@ -220,7 +222,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ProjectShowcase />
+      <ProjectShowcase preview />
       <ExperienceTimeline />
 
       {/* Workshops */}
