@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Users } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { FaGithub } from "react-icons/fa";
+
+const workshopIcons = { FaGitHub: FaGithub };
 import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
 import { prashWorkshops } from "@/data/workshop/details";
+import Reveal from "@/components/UI/Reveal";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -27,6 +30,7 @@ export default function WorkshopsPage() {
       <section className="w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           {/* Header */}
+          <Reveal mode="up">
           <div className="max-w-5xl">
             <h1 className="text-4xl font-semibold tracking-tight text-[#16191C] sm:text-5xl lg:text-[56px]">
               Workshops that turn
@@ -38,22 +42,21 @@ export default function WorkshopsPage() {
               real projects, and actually get your hands dirty.
             </p>
           </div>
+          </Reveal>
 
           {/* Workshop Grid */}
           <div className="mt-14 grid gap-5 lg:grid-cols-2">
-            {workshops.map((workshop) => {
-              const Icon = workshop.icon === "FaGitHub" ? FaGithub : FaGithub;
+            {workshops.map((workshop, index) => {
+              const Icon = workshopIcons[workshop.icon as keyof typeof workshopIcons] ?? FaGithub;
               const isAvailable = workshop.status === "Available";
 
               return (
+                <Reveal key={workshop.number} mode={index % 2 ? "right" : "left"} delay={index * 70}>
                 <article
                   key={workshop.number}
-                  className={`group relative overflow-hidden rounded-2xl border border-[#DEDFDA] bg-white p-6 transition duration-200 sm:p-8 ${
-                    isAvailable
-                      ? "hover:-translate-y-1 hover:border-[#C9DCD4]"
-                      : ""
-                  }`}
+                  className="workshop-card group relative overflow-hidden rounded-2xl border border-[#DEDFDA] bg-white p-6 transition duration-200 sm:p-8"
                 >
+                  <Link href={`/workshops/${workshop.slug}`} className="workshop-card-main" aria-label={`View ${workshop.title} details`}>
                   {/* Top */}
                   <div className="flex items-start justify-between">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E4EFEA] text-[#1F6F5C]">
@@ -106,33 +109,30 @@ export default function WorkshopsPage() {
                     </div>
                   </div>
 
-                  {/* Action */}
+                    <div className="workshop-meta-row">
+                      <span><CalendarDays size={13} aria-hidden="true" /> {workshop.date}</span>
+                      <span><Users size={13} aria-hidden="true" /> {workshop.totalSeats} seats</span>
+                    </div>
+                  </Link>
+
                   <div className="mt-8 border-t border-[#DEDFDA] pt-6">
-                    {isAvailable ? (
-                      <Link
-                        href={workshop.href}
-                        target="_blank"
-                        className="inline-flex items-center gap-2 font-mono text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
-                      >
-                        Explore workshop
-                        <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </Link>
-                    ) : (
-                      <Link
-                        href={`/workshops/${workshop.slug}`}
-                        className="inline-flex items-center gap-2 font-mono text-[12px] font-medium text-[#565B60] transition hover:text-[#176b58]"
-                      >
-                        View workshop details
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    )}
+                    <Link
+                      href={workshop.registerLink ?? `/workshops/${workshop.slug}`}
+                      target={workshop.registerLink ? "_blank" : undefined}
+                      rel={workshop.registerLink ? "noreferrer noopener" : undefined}
+                      className="workshop-register-button"
+                    >
+                      Register <ArrowUpRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </article>
+                </Reveal>
               );
             })}
           </div>
 
           {/* Philosophy */}
+          <Reveal mode="left">
           <div className="mt-20 border-t border-[#DEDFDA] pt-14 sm:mt-24">
             <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
               <div>
@@ -164,6 +164,7 @@ export default function WorkshopsPage() {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
