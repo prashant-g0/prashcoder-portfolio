@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowUpRight, } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import {FaGithub} from "react-icons/fa";
-import TestimonialMarquee from "@/components/TestimonialMarquee";
+import { FaGithub } from "react-icons/fa";
+import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
 import { prashWorkshops } from "@/data/workshop/details";
 
 const archivo = Archivo({
@@ -42,7 +42,7 @@ export default function WorkshopsPage() {
           {/* Workshop Grid */}
           <div className="mt-14 grid gap-5 lg:grid-cols-2">
             {workshops.map((workshop) => {
-              const Icon = workshop.icon;
+              const Icon = workshop.icon === "FaGitHub" ? FaGithub : FaGithub;
               const isAvailable = workshop.status === "Available";
 
               return (
@@ -118,9 +118,13 @@ export default function WorkshopsPage() {
                         <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </Link>
                     ) : (
-                      <span className="font-mono text-[12px] text-[#9A9D9F]">
-                        Details coming soon
-                      </span>
+                      <Link
+                        href={`/workshops/${workshop.slug}`}
+                        className="inline-flex items-center gap-2 font-mono text-[12px] font-medium text-[#565B60] transition hover:text-[#176b58]"
+                      >
+                        View workshop details
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
                     )}
                   </div>
                 </article>
@@ -153,9 +157,9 @@ export default function WorkshopsPage() {
                 </p>
 
                 <p className="mt-5 text-[15px] leading-7 text-[#565B60]">
-                  The goal isn&apos;t to leave knowing every command or
-                  concept. It&apos;s to leave knowing enough to continue
-                  learning and building on your own.
+                  The goal isn&apos;t to leave knowing every command or concept.
+                  It&apos;s to leave knowing enough to continue learning and
+                  building on your own.
                 </p>
               </div>
             </div>
@@ -188,7 +192,7 @@ export default function WorkshopsPage() {
       </section>
 
       {/* Testimonials */}
-          <TestimonialMarquee />
+      <TestimonialMarquee />
     </div>
   );
 }

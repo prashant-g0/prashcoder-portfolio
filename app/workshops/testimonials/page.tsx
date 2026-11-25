@@ -2,7 +2,7 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
 import { ArrowUpRight, Quote, Star, Users } from "lucide-react";
 
-import TestimonialCard from "@/components/TestimonialCard";
+import TestimonialCard from "@/components/workshop/TestimonialCard";
 import { testimonials } from "@/data/workshop/testimonials";
 
 const archivo = Archivo({
@@ -48,9 +48,7 @@ export default function TestimonialsPage() {
                 <Users className="h-5 w-5 text-[#1F6F5C]" />
 
                 <div>
-                  <p className="font-mono text-xs text-[#7A7F83]">
-                    STUDENTS
-                  </p>
+                  <p className="font-mono text-xs text-[#7A7F83]">STUDENTS</p>
                   <p className="text-lg font-semibold text-[#16191C]">
                     {testimonials.length}
                   </p>
@@ -61,9 +59,7 @@ export default function TestimonialsPage() {
                 <Star className="h-5 w-5 fill-current text-[#1F6F5C]" />
 
                 <div>
-                  <p className="font-mono text-xs text-[#7A7F83]">
-                    AVG RATING
-                  </p>
+                  <p className="font-mono text-xs text-[#7A7F83]">AVG RATING</p>
                   <p className="text-lg font-semibold text-[#16191C]">
                     {avgRating}/5
                   </p>

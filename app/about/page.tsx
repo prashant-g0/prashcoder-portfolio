@@ -4,13 +4,7 @@ import Link from "next/link";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 
 import { ArrowUpRight, Code2 } from "lucide-react";
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaWhatsapp,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 import { contact } from "@/data/prash/about";
 import { prashWorkshops } from "@/data/workshop/details";
@@ -31,6 +25,12 @@ const mono = IBM_Plex_Mono({
 const latestProjects = projects;
 const workshops = prashWorkshops;
 const socials = contact.socialLinks;
+const socialIcons = {
+  FaLinkedin,
+  FaInstagram,
+  FaYoutube,
+  FaWhatsapp,
+};
 
 export default function AboutPage() {
   return (
@@ -42,8 +42,8 @@ export default function AboutPage() {
           {/* Page Intro */}
           <div className="max-w-5xl">
             <h1 className="text-4xl font-semibold tracking-tight text-[#16191C] sm:text-5xl lg:text-[56px]">
-              The person behind{" "}
-              <span className="text-[#1F6F5C]"> prash.coder.</span>
+              Meet the person behind{" "}
+              <span className="text-[#1F6F5C]"> curious mind.</span>
             </h1>
           </div>
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-[#E4EFEA]">
                 {/* Replace with your actual image */}
                 <Image
-                  src="/images/spects-avatar.jpg"
+                  src="/user/personal/spects-avatar.jpg"
                   alt="Profile"
                   fill
                   className="object-cover"
@@ -78,7 +78,9 @@ export default function AboutPage() {
               {/* Socials */}
               <div className="mt-6 flex gap-2 border-t border-[#DEDFDA] pt-6">
                 {socials.map((social) => {
-                  const Icon = social.icon;
+                  const Icon =
+                    socialIcons[social.icon as keyof typeof socialIcons] ??
+                    FaWhatsapp;
 
                   return (
                     <div key={social.label} className="group relative">
@@ -196,7 +198,11 @@ export default function AboutPage() {
                     {latestProjects.map((project) => (
                       <Link
                         key={project.id}
-                        href={`{project.links.live}`}
+                        href={
+                          project.links.live ??
+                          project.links.github ??
+                          "/projects"
+                        }
                         target="_blank"
                         className="group flex min-h-43.75 flex-col rounded-xl border border-[#DEDFDA] bg-white p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#C9DCD4]"
                       >
