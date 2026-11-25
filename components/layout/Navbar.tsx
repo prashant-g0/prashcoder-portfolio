@@ -20,9 +20,10 @@ const mono = IBM_Plex_Mono({
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/workshops", label: "Workshops" },
-  { href: "/testimonials", label: "Testimonials" },
+  { href: "/projects", label: "Projects" },
+  { href: "/work", label: "Experience" },
   { href: "/about", label: "About" },
+  { href: "/workshops", label: "Workshops" },
 ];
 
 export default function Navbar() {
@@ -39,7 +40,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-3"
-            aria-label="prash.coder Workshop home"
+            aria-label="Prashant Gupta portfolio home"
             onClick={() => setIsMenuOpen(false)}
           >
             <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#D5D6D1] bg-white">
@@ -52,17 +53,17 @@ export default function Navbar() {
             </div>
 
             <div>
-              <p className="font-[family-name:var(--font-sans)] text-[16px] font-bold leading-none text-[#16191C]">
-                prash.coder
+              <p className="font-sans text-[16px] font-bold leading-none text-[#16191C]">
+                Prashant Gupta
               </p>
-              <p className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#565B60]">
-                Workshop
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-[#565B60]">
+                Developer
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-x-5 font-[family-name:var(--font-mono)] text-[12px] sm:gap-x-7 sm:text-[13px] md:flex">
+          <div className="hidden items-center gap-x-5 font-mono text-[12px] sm:gap-x-7 sm:text-[13px] md:flex">
             {links.map((link) => {
               const isActive = pathname === link.href;
 
@@ -97,7 +98,7 @@ export default function Navbar() {
             <div className="flex w-5 flex-col gap-1.5">
               <span
                 className={`h-px w-full bg-[#16191C] transition-transform duration-200 ${
-                  isMenuOpen ? "translate-y-[4px] rotate-45" : ""
+                  isMenuOpen ? "translate-y-1 rotate-45" : ""
                 }`}
               />
               <span
@@ -107,7 +108,7 @@ export default function Navbar() {
               />
               <span
                 className={`h-px w-full bg-[#16191C] transition-transform duration-200 ${
-                  isMenuOpen ? "-translate-y-[4px] -rotate-45" : ""
+                  isMenuOpen ? "-translate-y-1 -rotate-45" : ""
                 }`}
               />
             </div>
@@ -117,7 +118,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="border-t border-[#DEDFDA] pt-4 md:hidden">
-            <div className="flex flex-col font-[family-name:var(--font-mono)] text-[13px]">
+            <div className="flex flex-col font-mono text-[13px]">
               {links.map((link) => {
                 const isActive = pathname === link.href;
 

@@ -3,7 +3,7 @@
 import { Quote } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 
-import { testimonials } from "@/data/testimonials";
+import { testimonials } from "@/data/workshop/testimonials";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -25,7 +25,7 @@ function TestimonialCard({
   feedback: string;
 }) {
   return (
-    <article className="w-[300px] shrink-0 rounded-xl border border-[#DEDFDA] bg-white p-5 sm:w-[340px]">
+    <article className="w-75 shrink-0 rounded-xl border border-[#DEDFDA] bg-white p-5 sm:w-85">
       <Quote className="h-4 w-4 text-[#1F6F5C]" />
 
       <p className="mt-4 line-clamp-4 text-[13px] leading-6 text-[#565B60]">
@@ -33,11 +33,11 @@ function TestimonialCard({
       </p>
 
       <div className="mt-5 border-t border-[#DEDFDA] pt-4">
-        <p className="font-[family-name:var(--font-mono)] text-[11px] font-medium text-[#16191C]">
+        <p className="font-mono text-[11px] font-medium text-[#16191C]">
           {name}
         </p>
 
-        <p className="mt-1 font-[family-name:var(--font-mono)] text-[9px] uppercase tracking-wider text-[#7A7F83]">
+        <p className="mt-1 font-mono text-[9px] uppercase tracking-wider text-[#7A7F83]">
           Workshop participant
         </p>
       </div>
@@ -74,10 +74,10 @@ export default function TestimonialMarquee() {
       {/* Marquee */}
       <div className="relative mt-10 space-y-4">
         {/* Left fade */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-white to-transparent sm:w-32" />
 
         {/* Right fade */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-white to-transparent sm:w-32" />
 
         {/* Row 1 → */}
         <div className="flex w-max animate-marquee-left gap-4">

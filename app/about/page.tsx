@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Code2 } from "lucide-react";
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+
+import { ArrowUpRight, Code2 } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+
+import { contact } from "@/data/prash/about";
+import { prashWorkshops } from "@/data/workshop/details";
+import { projects } from "@/data/prash/projects";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -16,84 +22,28 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
-const latestProjects = [
-  {
-    number: "01",
-    title: "urllio - URL Shortener",
-    description:
-      "Shorten, manage, and track your links with urll.io, a fast and simple URL shortener with analytics and QR codes.",
-    tags: ["Next.js", "FastAPI", "PostgreSQL"],
-    href: "https://urllio.vercel.app/",
-  },
-  {
-    number: "02",
-    title: "Blush - Secret Messages",
-    description:
-      "Blush is a secure space for unsaid words. Send a private message that vanishes after one read, or post an anonymous secret to the public wall",
-    tags: ["Streamlit", "Python", "PostgreSQL"],
-    href: "https://blushnow.streamlit.app/",
-  },
-  {
-    number: "03",
-    title: "Your Crush Predictor",
-    description:
-      "An ML based crush likelihood predictor built with Streamlit..",
-    tags: ["Python", "ML", "Streamlit"],
-    href: "https://crushpredictor.streamlit.app/prediction",
-  },
-];
-
-const workshops = [
-  {
-    number: "01",
-    title: "Git & GitHub Workshop",
-    description:
-      "Learn Git and GitHub through a real collaborative workflow - from your first commit to your first pull request.",
-    tags: ["Git", "GitHub", "Collaboration"],
-    href: "https://forms.gle/k4rPe4g6AeVd4WDW8",
-  },
-];
-
-const socials = [
-  {
-    label: "GitHub",
-    href: "https://github.com/prashant-g0",
-    icon: FaGithub,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/prashant-g0",
-    icon: FaLinkedin,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/prash.coder",
-    icon: FaInstagram,
-  },
-  {
-    label: "Youtube",
-    href: "https://www.youtube.com/@prashcoder/shorts",
-    icon: FaYoutube,
-  },
-  {
-    label: "Community",
-    href: "https://chat.whatsapp.com/BBpNmYztCzc6aB83Ih2HJC",
-    icon: FaWhatsapp,
-  },
-];
+const latestProjects = projects;
+const workshops = prashWorkshops;
+const socials = contact.socialLinks;
+const socialIcons = {
+  FaLinkedin,
+  FaInstagram,
+  FaYoutube,
+  FaWhatsapp,
+};
 
 export default function AboutPage() {
   return (
     <div
-      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-[family-name:var(--font-sans)]`}
+      className={`${archivo.variable} ${mono.variable} min-h-screen bg-[#F6F6F3] font-sans`}
     >
       <section className="w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-15">
         <div className="mx-auto max-w-7xl">
           {/* Page Intro */}
           <div className="max-w-5xl">
             <h1 className="text-4xl font-semibold tracking-tight text-[#16191C] sm:text-5xl lg:text-[56px]">
-              The person behind{" "}
-              <span className="text-[#1F6F5C]"> prash.coder.</span>
+              Meet the person behind{" "}
+              <span className="text-[#1F6F5C]"> curious mind.</span>
             </h1>
           </div>
 
@@ -104,7 +54,7 @@ export default function AboutPage() {
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-[#E4EFEA]">
                 {/* Replace with your actual image */}
                 <Image
-                  src="/images/spects-avatar.jpg"
+                  src="/user/personal/spects-avatar.jpg"
                   alt="Profile"
                   fill
                   className="object-cover"
@@ -112,7 +62,7 @@ export default function AboutPage() {
               </div>
 
               <div className="mt-6">
-                <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                   Hi, I&apos;m
                 </p>
 
@@ -120,7 +70,7 @@ export default function AboutPage() {
                   Prashant G.
                 </h2>
 
-                <p className="mt-1 font-[family-name:var(--font-mono)] text-[12px] text-[#7A7F83]">
+                <p className="mt-1 font-mono text-[12px] text-[#7A7F83]">
                   Developer · Educator · Builder
                 </p>
               </div>
@@ -128,7 +78,9 @@ export default function AboutPage() {
               {/* Socials */}
               <div className="mt-6 flex gap-2 border-t border-[#DEDFDA] pt-6">
                 {socials.map((social) => {
-                  const Icon = social.icon;
+                  const Icon =
+                    socialIcons[social.icon as keyof typeof socialIcons] ??
+                    FaWhatsapp;
 
                   return (
                     <div key={social.label} className="group relative">
@@ -142,7 +94,7 @@ export default function AboutPage() {
                       </Link>
 
                       {/* Tooltip */}
-                      <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 translate-y-1 opacity-0 whitespace-nowrap rounded-md bg-[#16191C] px-2 py-1 font-[family-name:var(--font-mono)] text-[9px] text-white transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
+                      <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 translate-y-1 opacity-0 whitespace-nowrap rounded-md bg-[#16191C] px-2 py-1 font-mono text-[9px] text-white transition-all duration-150 group-hover:translate-y-0 group-hover:opacity-100">
                         {social.label}
                       </span>
                     </div>
@@ -162,7 +114,7 @@ export default function AboutPage() {
 
             {/* Story */}
             <div className="flex flex-col justify-start">
-              <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#7A7F83]">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-[#7A7F83]">
                 My story
               </p>
 
@@ -200,7 +152,7 @@ export default function AboutPage() {
               {/* Approach */}
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border border-[#DEDFDA] bg-white p-5">
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                     Approach
                   </p>
                   <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -209,7 +161,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="rounded-xl border border-[#DEDFDA] bg-white p-5">
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                     Focus
                   </p>
                   <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -218,7 +170,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="rounded-xl border border-[#DEDFDA] bg-white p-5">
-                  <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#7A7F83]">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
                     Philosophy
                   </p>
                   <p className="mt-2 text-sm font-medium text-[#16191C]">
@@ -232,7 +184,7 @@ export default function AboutPage() {
                 <div className="mt-10 border-t border-[#DEDFDA] pt-8">
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[#1F6F5C]">
+                      <p className="font-mono text-[10px] uppercase tracking-wider text-[#1F6F5C]">
                         Recent work
                       </p>
 
@@ -245,15 +197,19 @@ export default function AboutPage() {
                   <div className="mt-5 grid gap-3 sm:grid-cols-3">
                     {latestProjects.map((project) => (
                       <Link
-                        key={project.number}
-                        href={project.href}
+                        key={project.id}
+                        href={
+                          project.links.live ??
+                          project.links.github ??
+                          "/projects"
+                        }
                         target="_blank"
-                        className="group flex min-h-[175px] flex-col rounded-xl border border-[#DEDFDA] bg-white p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#C9DCD4]"
+                        className="group flex min-h-43.75 flex-col rounded-xl border border-[#DEDFDA] bg-white p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[#C9DCD4]"
                       >
                         {/* Header */}
                         <div className="flex items-center justify-between">
-                          <span className="font-[family-name:var(--font-mono)] text-[10px] text-[#7A7F83]">
-                            {project.number}
+                          <span className="font-mono text-[10px] text-[#7A7F83]">
+                            {project.id}
                           </span>
 
                           <ArrowUpRight className="h-3.5 w-3.5 text-[#7A7F83] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#1F6F5C]" />
@@ -272,10 +228,10 @@ export default function AboutPage() {
 
                         {/* Tags */}
                         <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
-                          {project.tags.map((tag) => (
+                          {project.technologiesUsed.map((tag) => (
                             <span
                               key={tag}
-                              className="rounded-full bg-[#F6F6F3] px-2 py-1 font-[family-name:var(--font-mono)] text-[9px] text-[#565B60]"
+                              className="rounded-full bg-[#F6F6F3] px-2 py-1 font-mono text-[9px] text-[#565B60]"
                             >
                               {tag}
                             </span>
@@ -293,7 +249,7 @@ export default function AboutPage() {
           <div className="mt-24 border-t border-[#DEDFDA] pt-14 sm:mt-28">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
-                <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[#1F6F5C]">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
                   Explore
                 </p>
 
@@ -309,7 +265,7 @@ export default function AboutPage() {
 
               <Link
                 href="/workshops"
-                className="inline-flex w-fit items-center gap-2 font-[family-name:var(--font-mono)] text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
+                className="inline-flex w-fit items-center gap-2 font-mono text-[12px] font-medium text-[#1F6F5C] transition hover:text-[#195A4A]"
               >
                 View all workshops
                 <ArrowUpRight className="h-4 w-4" />
@@ -325,7 +281,7 @@ export default function AboutPage() {
                   className="group rounded-2xl border border-[#DEDFDA] bg-white p-6 transition duration-200 hover:-translate-y-1 hover:border-[#C9DCD4]"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-mono)] text-[11px] text-[#7A7F83]">
+                    <span className="font-mono text-[11px] text-[#7A7F83]">
                       {workshop.number}
                     </span>
 
@@ -344,7 +300,7 @@ export default function AboutPage() {
                     {workshop.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-[#F6F6F3] px-3 py-1 font-[family-name:var(--font-mono)] text-[10px] text-[#565B60]"
+                        className="rounded-full bg-[#F6F6F3] px-3 py-1 font-mono text-[10px] text-[#565B60]"
                       >
                         {tag}
                       </span>
@@ -371,7 +327,7 @@ export default function AboutPage() {
 
               <Link
                 href="/workshops"
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-[family-name:var(--font-mono)] text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
+                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
               >
                 Join the next workshop
                 <ArrowUpRight className="h-4 w-4" />
