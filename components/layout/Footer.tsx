@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { contact } from "@/data/prash/about";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -16,9 +17,10 @@ const mono = IBM_Plex_Mono({
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/workshops", label: "Workshops" },
-  { href: "/workshops/testimonials", label: "Testimonials" },
+  { href: "/projects", label: "Projects" },
+  { href: "/work", label: "Experience" },
   { href: "/about", label: "About" },
+  { href: "/workshops", label: "Workshops" },
 ];
 
 export default function Footer() {
@@ -32,16 +34,18 @@ export default function Footer() {
           {/* Brand + Vision */}
           <div className="max-w-xl">
             <p className="font-mono text-xs uppercase tracking-wider text-[#1F6F5C]">
-              prash.coder / workshop
+              Prashant Gupta / developer
             </p>
 
             <h2 className="mt-5 mb-7 max-w-lg text-3xl font-semibold leading-tight tracking-tight text-[#16191C] sm:text-4xl">
-              Learn things.
+              Build useful things.
               <br />
-              <span className="text-[#1F6F5C]">Build things.</span>
-              <br />
-              Share things.
+              <span className="text-[#1F6F5C]">Share what works.</span>
             </h2>
+
+            <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 font-mono text-xs text-[#565B60] hover:text-[#176b58]">
+              {contact.email} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
           </div>
 
           {/* Navigation */}
@@ -68,11 +72,17 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col gap-4 border-t border-[#DEDFDA] pt-6 font-mono text-[11px] text-[#7A7F83] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} prash.coder</p>
+          <p>© {new Date().getFullYear()} {contact.name}</p>
 
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
-            <span>Learn. Build. Collaborate.</span>
+          <div className="flex flex-wrap items-center gap-4">
+            {contact.socialLinks.slice(0, 4).map((social) => (
+              <Link key={social.label} href={social.href} target="_blank" rel="noreferrer" className="transition hover:text-[#176b58]">
+                {social.label}
+              </Link>
+            ))}
+            <Link href="#top" aria-label="Back to top" title="Back to top" className="flex h-9 w-9 items-center justify-center rounded-md border border-[#d8dad4] transition hover:border-[#176b58] hover:text-[#176b58]">
+              <ArrowUp className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>
