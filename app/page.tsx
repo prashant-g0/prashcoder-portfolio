@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRight, GitBranch, Sparkles, Users, Wrench } from "lucide-react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import TestimonialMarquee from "@/components/TestimonialMarquee";
+import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
+import PersonalCard from "@/components/Hero/PersonalCard";
+import ProjectShowcase from "@/components/Projects/ProjectShowcase";
+import ExperienceTimeline from "@/components/Experience/ExperienceTimeline";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -60,42 +63,44 @@ export default function Home() {
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-mono text-[11px] text-[#565B60]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
-                prash.coder / workshops
+                @prash.coder / developer
               </div>
 
               <h1 className="max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight text-[#16191C] sm:text-6xl lg:text-[76px]">
-                Learn something.
+                Prashant Gupta,
                 <br />
-                <span className="text-[#1F6F5C]">Build something.</span>
-                <br />
-                Share what you know.
+                <span className="text-[#1F6F5C]">developer &amp; builder.</span>
               </h1>
 
               <p className="mt-7 max-w-2xl text-[16px] leading-7 text-[#565B60] sm:text-lg">
-                Practical technical workshops for curious people who want to
-                stop just watching tutorials and start actually building.
+                I build full-stack products and applied AI experiences, teach
+                practical developer skills, and turn complex ideas into tools
+                people can use.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link
-                  href="/workshops"
+                  href="#projects"
                   className="inline-flex items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
                 >
-                  Explore workshops
+                  Explore projects
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
 
                 <Link
-                  href="/about"
+                  href="mailto:mail.prashantg0@gmail.com"
                   className="inline-flex items-center gap-2 rounded-lg border border-[#D5D6D1] bg-white px-5 py-3 font-mono text-[12px] font-medium text-[#33373B] transition hover:border-[#1F6F5C] hover:text-[#1F6F5C]"
                 >
-                  My story
+                  Get in touch
                 </Link>
               </div>
             </div>
 
             {/* Right Side Visual */}
-            <div className="relative hidden lg:block">
+            <div className="relative">
+              <PersonalCard />
+            </div>
+            <div className="relative hidden">
               <div className="relative mx-auto max-w-107.5">
                 {/* Decorative background */}
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-[#C9DCD4]" />
@@ -215,6 +220,9 @@ export default function Home() {
         </div>
       </section>
 
+      <ProjectShowcase />
+      <ExperienceTimeline />
+
       {/* Workshops */}
       <section className="w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
         <div className="mx-auto max-w-7xl">
@@ -225,7 +233,7 @@ export default function Home() {
               </p>
 
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#16191C] sm:text-4xl">
-                Workshops built around doing.
+                Join My Workshops.
               </h2>
 
               <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#565B60]">
