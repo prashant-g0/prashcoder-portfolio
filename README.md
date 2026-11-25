@@ -1,31 +1,43 @@
-# Prash Coder Workshop
+# Prashant Gupta Portfolio
 
-A simple collaborative website built for managing workshop.
-The goal is to practice the complete GitHub workflow by adding your own workshop testimonial to the project.
+A personal developer portfolio covering projects, software experience, education, achievements, technical skills, and workshops.
 
-## Tech Stack
+## Tech stack
 
-- Next.js
+- Next.js 16 App Router
+- React 19
 - TypeScript
 - Tailwind CSS
-- Git & GitHub
+- Lucide React and React Icons
 
-## Your Task
+## Local development
 
-Add your testimonial to:
-
-```text
-data/testimonials.ts
+```bash
+npm install
+npm run dev
 ```
 
-Only modify this file. Do not change any other project files or existing testimonials.
+Open `http://localhost:3000`.
 
-For the complete step-by-step contribution guide, see [CONTRIBUTING.md](CONTRIBUTING.md).
+## Routes
 
-## Git Workflow
+- `/` - Portfolio home and interactive personal card
+- `/projects` - Curated project showcase
+- `/work` - Experience, education, skills, and achievements
+- `/about` - Personal profile
+- `/workshops` - Workshop overview and testimonials
+- `/workshops/[slug]` - Workshop details
+- `/workshops/testimonials` - Student feedback
 
-```text
-Fork → Clone → Branch → Edit → Commit → Push → Pull Request
+## Content
+
+Personal content is sourced from `data/prash`; workshop content comes from `data/workshop`. Update those TypeScript data files instead of rewriting page components.
+
+The card uses `public/user/personal/card.png` and includes pointer movement, touch-friendly presentation, keyboard-accessible download, and a reduced-motion fallback.
+
+## Quality checks
+
+```bash
+npm run lint
+npm run build
 ```
-
-Happy building!
