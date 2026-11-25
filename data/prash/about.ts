@@ -17,28 +17,45 @@ export const contact = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/prashant-g0",
       icon: "FaLinkedin",
+      color: "#0A66C2",
     },
     {
       label: "Instagram",
       href: "https://www.instagram.com/prash.coder",
       icon: "FaInstagram",
+      color: "#D62976",
     },
     {
       label: "Youtube",
       href: "https://www.youtube.com/@prashcoder/shorts",
       icon: "FaYoutube",
+      color: "#FF0033",
     },
     {
       label: "Community",
       href: "https://chat.whatsapp.com/BBpNmYztCzc6aB83Ih2HJC",
       icon: "FaWhatsapp",
+      color: "#25D366",
     },
     {
       label: "Email",
       href: "mailto:mail.prashantg0@gmail.com",
       icon: "FaRegEnvelope",
+      color: "#176b58",
     },
   ],
+};
+
+export const aboutContent = {
+  heading: "Building the understanding behind the software.",
+  introduction:
+    "I am a software engineer who works across full-stack products, applied AI, and developer education.",
+  biography: [
+    "I build with Next.js, PHP, Python, FastAPI, SQL databases, and machine learning tools. Much of my work sits between a usable interface and the systems behind it: APIs, authentication, database workflows, analytics, and practical AI features.",
+    "My experience spans software development internships, mentoring, teaching, and hands-on workshops. Explaining concepts while building has shaped how I approach engineering: first understand the problem, keep the implementation clear, and test the result in real workflows.",
+  ],
+  quote:
+    "You can't keep doing the same things and expect extraordinary results.",
 };
 
 export const education = [
@@ -159,30 +176,40 @@ export const professionalDetails = {
       title: "Database Management Systems (DBMS) Certification",
       issuer: "Scaler School Of Technology",
       certificateLink: "https://moonshot.scaler.com/s/li/g8HRsWDuf6",
+      certificateMediaLink:
+        "https://drive.google.com/file/d/16lzqaMeWaoya92fjosO_Zt3dxU482vU5/view?usp=drive_link",
     },
     {
       id: 2,
       title: "SQL using MySQL and Database Design Course",
       issuer: "Scaler School Of Technology",
       certificateLink: "https://moonshot.scaler.com/s/li/ig-WA8ydES",
+      certificateMediaLink:
+        "https://drive.google.com/file/d/1Nhfj_HYxgT9rPJ9NWNewC5eZn57gdNie/view?usp=drive_link",
     },
     {
       id: 3,
       title: "Software Engineer Intern",
       issuer: "HackerRank",
       certificateLink: "https://www.hackerrank.com/profile/mail_prashantg0",
+      certificateMediaLink:
+        "https://drive.google.com/file/d/1iHF2R22LeTqC7rehVxoozRsFUE2q_Wrq/view?usp=drive_link",
     },
     {
       id: 4,
       title: "5 Star Python",
       issuer: "HackerRank",
       certificateLink: "https://www.hackerrank.com/profile/mail_prashantg0",
+      certificateMediaLink:
+        "https://drive.google.com/file/d/1YWQIzOki9VPHCAvhsrj-vd2oSj2rWYZA/view?usp=drive_link",
     },
     {
       id: 5,
       title: "5 Star SQL",
       issuer: "HackerRank",
       certificateLink: "https://www.hackerrank.com/profile/mail_prashantg0",
+      certificateMediaLink:
+        "https://drive.google.com/file/d/1r5Lj9UDgiZLw8TRFFXNPrCAaT_So00TB/view?usp=drive_link",
     },
   ],
   techStack: {
