@@ -136,39 +136,33 @@ export const professionalDetails = {
     {
       label: "GitHub",
       href: "https://github.com/prashant-g0",
-      icon: "FaGithub", // import { FaGithub } from 'react-icons/fa';
     },
     {
       label: "Leetcode",
       href: "https://leetcode.com/u/prashantg-0/",
-      icon: "SiLeetcode", // import { SiLeetcode } from 'react-icons/si';
     },
     {
       label: "GeeksForGeeks",
       href: "https://www.geeksforgeeks.org/profile/mailprasu0t8",
-      icon: "SiGeeksforgeeks", // import { SiGeeksforgeeks } from 'react-icons/si';
     },
     {
       label: "HackerRank",
       href: "https://www.hackerrank.com/profile/mail_prashantg0",
-      icon: "FaHackerrank", // import { FaHackerrank } from 'react-icons/fa';
     },
     {
       label: "Codechef",
       href: "https://www.codechef.com/users/prashantg_0",
-      icon: "SiCodechef", // import { SiCodechef } from 'react-icons/si';
     },
   ],
   professionalRoles: [
     "Software Engineer",
-    "Backend Developer",
-    "Machine Learning Engineer",
+    "Backend Engineer",
+    "System Architect",
     "AI Enthusiast",
+    "Machine Learning Dev",
     "Open Source Contributor",
-    "Tech Blogger",
-    "Workshop Trainer",
-    "Community Builder",
-    "Teacher",
+    "Technical Writer",
+    "Educator",
   ],
   certifications: [
     {
