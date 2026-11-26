@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, GitBranch } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { projects, type Projects } from "@/data/prash/projects";
 import { getLatestProjects } from "@/data/prash/selectors";
 import Modal from "@/components/UI/Modal";
 import Reveal from "@/components/UI/Reveal";
-import { FaGithub } from "react-icons/fa";
 
 export default function ProjectShowcase({
   preview = false,
@@ -236,7 +236,7 @@ export default function ProjectShowcase({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <GitBranch size={15} /> Source code
+                    <FaGithub size={15} /> Source code
                   </Link>
                 ) : null}
               </div>

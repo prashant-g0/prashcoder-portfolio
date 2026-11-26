@@ -28,6 +28,7 @@ Open `http://localhost:3000`.
 - `/workshops` - Workshop overview and testimonials
 - `/workshops/[slug]` - Workshop details
 - `/workshops/testimonials` - Student feedback
+- `/docs` - Design decisions and implementations
 
 ## Content
 

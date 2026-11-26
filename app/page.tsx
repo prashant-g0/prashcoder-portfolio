@@ -14,6 +14,7 @@ import PersonalCard from "@/components/Hero/PersonalCard";
 import ProjectShowcase from "@/components/Projects/ProjectShowcase";
 import ExperienceTimeline from "@/components/Experience/ExperienceTimeline";
 import RoleRotator from "@/components/UI/RoleRotator";
+import ContextWidget from "@/components/UI/ContextWidget";
 import { contact } from "@/data/prash/about";
 import { prashWorkshops } from "@/data/workshop/details";
 
@@ -65,10 +66,10 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
             {/* Hero Content */}
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-mono text-[11px] text-[#565B60]">
+              {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-mono text-[11px] text-[#565B60]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
                 @prash.coder / developer
-              </div>
+              </div> */}
 
               <h1 className="hero-headline">
                 <span>Prashant Gupta</span>
@@ -104,6 +105,8 @@ export default function Home() {
                   <FaEnvelope className="h-4 w-4" />
                 </Link>
               </div>
+
+              <ContextWidget />
             </div>
 
             {/* Right Side Visual */}

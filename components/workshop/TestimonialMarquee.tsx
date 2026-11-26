@@ -74,10 +74,10 @@ export default function TestimonialMarquee() {
       {/* Marquee */}
       <div className="relative mt-10 space-y-4">
         {/* Left fade */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-white to-transparent sm:w-32" />
+        <div className="testimonial-fade testimonial-fade-left" />
 
         {/* Right fade */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-white to-transparent sm:w-32" />
+        <div className="testimonial-fade testimonial-fade-right" />
 
         {/* Row 1 → */}
         <div className="flex w-max animate-marquee-left gap-4">

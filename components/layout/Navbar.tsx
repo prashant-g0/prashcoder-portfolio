@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { contact } from "@/data/prash/about";
+import ThemeButton from "./ThemeButton";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -71,8 +72,10 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Hamburger Button */}
-          <button
+          {/* Actions */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeButton />
+            <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#D5D6D1] text-[#16191C] transition hover:bg-white md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -84,7 +87,12 @@ export default function Navbar() {
             ) : (
               <Menu size={20} aria-hidden="true" />
             )}
-          </button>
+            </button>
+          </div>
+
+          <div className="hidden md:block">
+            <ThemeButton />
+          </div>
         </div>
 
         {/* Mobile Navigation */}
