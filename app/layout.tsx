@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
@@ -62,7 +63,28 @@ export default function RootLayout({
       id="top"
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(
+                function(){
+                  try{
+                    var saved=localStorage.getItem('theme');
+                    var theme=saved==='dark'||saved==='light'?saved:'light';
+                    document.documentElement.dataset.theme=theme;
+                  }
+                  catch(e){
+                    document.documentElement.dataset.theme='light';
+                  }
+                }
+              )();`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <Navbar />
 
