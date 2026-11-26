@@ -115,7 +115,7 @@ export default function WorkshopsPage() {
                     </div>
                   </Link>
 
-                  <div className="mt-8 border-t border-[#DEDFDA] pt-6">
+                  <div className="mt-8 flex flex-wrap gap-3 border-t border-[#DEDFDA] pt-6">
                     <Link
                       href={workshop.registerLink ?? `/workshops/${workshop.slug}`}
                       target={workshop.registerLink ? "_blank" : undefined}
@@ -123,6 +123,12 @@ export default function WorkshopsPage() {
                       className="workshop-register-button"
                     >
                       Register <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href={`/workshops/${workshop.slug}`}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-md border border-(--border) px-4 font-mono text-[11px] font-medium text-foreground transition hover:border-(--primary) hover:text-(--primary)"
+                    >
+                      Explore <ArrowUpRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </article>
