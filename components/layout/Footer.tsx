@@ -4,7 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import Image from "next/image";
-import { ArrowUp, ArrowUpRight, Download, FileText, MapPin } from "lucide-react";
+import {
+  ArrowUp,
+  ArrowUpRight,
+  Download,
+  FileText,
+  MapPin,
+} from "lucide-react";
 import { contact } from "@/data/prash/about";
 import SocialLinks from "@/components/UI/SocialLinks";
 
@@ -74,58 +80,89 @@ export default function Footer() {
 
           <div className="footer-actions">
             <div className="footer-card-action-wrap">
-            <a
-              href="/user/personal/card.png"
-              download="Prashant-Gupta-Card.png"
-              onClick={downloadCard}
-              className={`footer-card-action ${cardStarted ? "is-downloading" : ""}`}
-              aria-label="Download Prashant Gupta's personal card"
-            >
-              <span className="footer-card-thumbnail" aria-hidden="true">
-                <span />
-              </span>
-              <span className="footer-action-copy">
-                <small>{cardStarted ? "Collected" : "Personal card"}</small>
-                <strong>Get My Card</strong>
-              </span>
-              <Download size={18} aria-hidden="true" />
-            </a>
-            <div className="footer-card-preview" aria-hidden="true">
-              <Image src="/user/personal/card.png" alt="" width={180} height={270} />
-            </div>
+              <a
+                href="/user/personal/card.png"
+                download="Prashant-Gupta-Card.png"
+                onClick={downloadCard}
+                className={`footer-card-action ${cardStarted ? "is-downloading" : ""}`}
+                aria-label="Download Prashant Gupta's personal card"
+              >
+                <span className="footer-card-thumbnail" aria-hidden="true">
+                  <span />
+                </span>
+                <span className="footer-action-copy">
+                  <small>{cardStarted ? "Collected" : "Personal card"}</small>
+                  <strong>Get My Card</strong>
+                </span>
+                <Download size={18} aria-hidden="true" />
+              </a>
+              <div className="footer-card-preview" aria-hidden="true">
+                <Image
+                  src="/user/personal/card.png"
+                  alt=""
+                  width={180}
+                  height={270}
+                />
+              </div>
             </div>
 
             <div className="footer-resume-action-wrap">
-            <button
-              type="button"
-              onClick={openAndDownloadResume}
-              className={`footer-resume-action ${resumeStarted ? "is-opening" : ""}`}
-              aria-label="Open and download Prashant Gupta's resume"
-            >
-              <span className="footer-resume-icon" aria-hidden="true">
-                <FileText size={20} />
-              </span>
-              <span className="footer-action-copy">
-                <small>
-                  {resumeStarted ? "Opening & saving" : "Current resume"}
-                </small>
-                <strong>Get My Resume</strong>
-              </span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </button>
-            <div className="footer-resume-preview" aria-label="Resume preview">
-              <iframe src={resumePreviewLink} title="Resume preview" loading="lazy" />
-            </div>
+              <button
+                type="button"
+                onClick={openAndDownloadResume}
+                className={`footer-resume-action ${resumeStarted ? "is-opening" : ""}`}
+                aria-label="Open and download Prashant Gupta's resume"
+              >
+                <span className="footer-resume-icon" aria-hidden="true">
+                  <FileText size={20} />
+                </span>
+                <span className="footer-action-copy">
+                  <small>
+                    {resumeStarted ? "Opening & saving" : "Current resume"}
+                  </small>
+                  <strong>Get My Resume</strong>
+                </span>
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </button>
+              <div
+                className="footer-resume-preview"
+                aria-label="Resume preview"
+              >
+                <iframe
+                  src={resumePreviewLink}
+                  title="Resume preview"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
             <div className="footer-location-action-wrap">
-              <a href={mapsUrl} target="_blank" rel="noreferrer noopener" className="footer-location-action">
-                <span className="footer-location-icon"><MapPin size={20} /></span>
-                <span className="footer-action-copy"><small>{contact.location.city}, {contact.location.country}</small><strong>Visit Me</strong></span>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="footer-location-action"
+              >
+                <span className="footer-location-icon">
+                  <MapPin size={20} />
+                </span>
+                <span className="footer-action-copy">
+                  <small>
+                    {contact.location.city}, {contact.location.country}
+                  </small>
+                  <strong>Visit Me</strong>
+                </span>
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
-              <div className="footer-map-preview" aria-label={`Map preview of ${contact.location.city}`}>
-                <iframe src={mapPreviewLink} title={`Map of ${contact.location.city}`} loading="lazy" />
+              <div
+                className="footer-map-preview"
+                aria-label={`Map preview of ${contact.location.city}`}
+              >
+                <iframe
+                  src={mapPreviewLink}
+                  title={`Map of ${contact.location.city}`}
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -136,7 +173,8 @@ export default function Footer() {
           aria-label="Contact and social links"
         >
           <a href={`mailto:${contact.email}`} className="footer-email">
-            {contact.email}
+            <span>{contact.email}</span>
+            <span className="footer-email-icon">↗</span>
           </a>
           <SocialLinks compact />
         </section>
