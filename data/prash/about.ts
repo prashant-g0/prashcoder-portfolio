@@ -135,23 +135,33 @@ export const professionalDetails = {
   codingProfiles: [
     {
       label: "GitHub",
+      username: "prashant-g0",
       href: "https://github.com/prashant-g0",
+      icon: "FaGithub",
     },
     {
       label: "Leetcode",
+      username: "prashantg-0",
       href: "https://leetcode.com/u/prashantg-0/",
+      icon: "SiLeetcode",
     },
     {
       label: "GeeksForGeeks",
+      username: "mailprasu0t8",
       href: "https://www.geeksforgeeks.org/profile/mailprasu0t8",
+      icon: "SiGeeksforgeeks",
     },
     {
       label: "HackerRank",
+      username: "mail_prashantg0",
       href: "https://www.hackerrank.com/profile/mail_prashantg0",
+      icon: "FaHackerrank",
     },
     {
       label: "Codechef",
+      username: "prashantg_0",
       href: "https://www.codechef.com/users/prashantg_0",
+      icon: "SiCodechef",
     },
   ],
   professionalRoles: [
