@@ -1,0 +1,11 @@
+Introduce a compact, animated **Gallery marquee component** on the About page, using the `gallery` data already defined in `data/prash/about.ts`. Do not hardcode gallery content inside the component.
+
+**Design & Layout:** Build a horizontally scrolling marquee of gallery cards that continuously moves across the page, creating a compact visual showcase without consuming too much vertical space. Each gallery entry should appear as a small image collage/card with its title, category and year subtly overlaid. Keep the design editorial, minimal and consistent with the portfolio. Use varying image crops where appropriate to make the marquee visually engaging without clutter.
+
+**Marquee Behaviour:** Implement a seamless, continuous horizontal loop with smooth movement. Pause or slow the marquee on hover and allow users to interact with individual cards. Avoid abrupt resets, visible gaps or duplicated-content glitches. Ensure the marquee adapts to screen widths and respects `prefers-reduced-motion`, falling back to a static or manually scrollable layout.
+
+**Modal/Lightbox:** Clicking any gallery card should open an elegant modal displaying the selected entry's full image collection. Support previous/next image navigation, image counter, keyboard navigation, Escape to close and click-outside closing. Display the title, description (if available), category, year and source link (if available). Include smooth modal and image transition animations.
+
+**Animations & Styling:** Use subtle card hover effects, image scaling/cropping transitions, scroll-reveal for the gallery section and polished modal transitions. Keep motion restrained, support light/dark themes and avoid excessive animation.
+
+**Implementation:** Create a reusable Gallery component with its own component folder and styles. Consume the existing gallery data, convert Google Drive links into displayable image URLs where needed, and handle broken images, missing descriptions and empty data gracefully. Ensure accessibility, responsiveness and compatibility with the existing About page. Avoid unnecessary dependencies or refactoring unrelated components.
