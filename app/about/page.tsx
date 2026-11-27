@@ -12,6 +12,8 @@ import { prashWorkshops } from "@/data/workshop/details";
 import { projects } from "@/data/prash/projects";
 import { getLatestProjects } from "@/data/prash/selectors";
 import CodingProfiles from "@/components/Profiles/CodingProfiles";
+import Gallery from "@/components/Gallery/Gallery";
+import { gallery } from "@/data/prash/about";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -202,6 +204,11 @@ export default function AboutPage() {
             </div>
             </Reveal>
           </div>
+
+          {/* Gallery */}
+          <Reveal mode="up">
+            <Gallery entries={gallery} />
+          </Reveal>
 
           {/* Workshops */}
           <Reveal mode="up">
