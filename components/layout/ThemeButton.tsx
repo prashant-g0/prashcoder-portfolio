@@ -29,7 +29,9 @@ export default function ThemeButton() {
       setTheme(next);
     };
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const transition = document.startViewTransition;
 
     if (!reducedMotion && typeof transition === "function") {
@@ -44,8 +46,16 @@ export default function ThemeButton() {
       type="button"
       className="theme-button"
       onClick={toggleTheme}
-      aria-label={mounted && theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-      title={mounted && theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+      aria-label={
+        mounted && theme === "light"
+          ? "Switch to dark mode"
+          : "Switch to light mode"
+      }
+      title={
+        mounted && theme === "light"
+          ? "Switch to dark mode"
+          : "Switch to light mode"
+      }
     >
       <span className="theme-button-icon" aria-hidden="true">
         {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}

@@ -28,13 +28,13 @@ function RatingSquares({ rating }: { rating: number }) {
   );
 }
 
-export default function TestimonialCard({
-  testimonial,
-}: TestimonialCardProps) {
+export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
   const { name, role, rating, feedback, liked, improvements } = testimonial;
 
   return (
-    <article className={`${mono.variable} border-b border-[#DEDFDA] py-8 first:pt-0 last:border-b-0`}>
+    <article
+      className={`${mono.variable} border-b border-[#DEDFDA] py-8 first:pt-0 last:border-b-0`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="font-mono text-[13px] text-[#16191C]">
           {name} <span className="text-[#565B60]">— {role}</span>

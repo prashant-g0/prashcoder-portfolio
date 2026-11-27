@@ -76,17 +76,17 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeButton />
             <button
-            type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#D5D6D1] text-[#16191C] transition hover:bg-white md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? (
-              <X size={20} aria-hidden="true" />
-            ) : (
-              <Menu size={20} aria-hidden="true" />
-            )}
+              type="button"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#D5D6D1] text-[#16191C] transition hover:bg-white md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? (
+                <X size={20} aria-hidden="true" />
+              ) : (
+                <Menu size={20} aria-hidden="true" />
+              )}
             </button>
           </div>
 

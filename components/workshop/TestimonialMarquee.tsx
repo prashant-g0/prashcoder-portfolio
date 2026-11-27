@@ -51,7 +51,6 @@ export default function TestimonialMarquee() {
   }
 
   const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
-  const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
 
   return (
     <section
@@ -79,22 +78,11 @@ export default function TestimonialMarquee() {
         {/* Right fade */}
         <div className="testimonial-fade testimonial-fade-right" />
 
-        {/* Row 1 → */}
+        {/* Row 1 */}
         <div className="flex w-max animate-marquee-left gap-4">
           {[...firstRow, ...firstRow].map((testimonial, index) => (
             <TestimonialCard
               key={`row-one-${testimonial.id}-${index}`}
-              name={testimonial.name}
-              feedback={testimonial.feedback}
-            />
-          ))}
-        </div>
-
-        {/* Row 2 ← */}
-        <div className="flex w-max animate-marquee-right gap-4">
-          {[...secondRow, ...secondRow].map((testimonial, index) => (
-            <TestimonialCard
-              key={`row-two-${testimonial.id}-${index}`}
               name={testimonial.name}
               feedback={testimonial.feedback}
             />

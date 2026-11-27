@@ -48,7 +48,10 @@ export async function GET() {
     };
 
     return NextResponse.json(result, {
-      headers: { "Cache-Control": "public, max-age=60, s-maxage=1800, stale-while-revalidate=600" },
+      headers: {
+        "Cache-Control":
+          "public, max-age=60, s-maxage=1800, stale-while-revalidate=600",
+      },
     });
   } catch {
     return NextResponse.json(
