@@ -7,7 +7,13 @@ import { useState } from "react";
 import { professionalDetails } from "@/data/prash/about";
 
 export default function Certifications() {
-  const [preview, setPreview] = useState<{ title: string; link: string; driveId?: string; x: number; y: number } | null>(null);
+  const [preview, setPreview] = useState<{
+    title: string;
+    link: string;
+    driveId?: string;
+    x: number;
+    y: number;
+  } | null>(null);
 
   function showPreview(
     event: React.MouseEvent<HTMLElement>,
@@ -18,12 +24,14 @@ export default function Certifications() {
     const width = 360;
     const height = 250;
     const offset = 18;
-    const x = event.clientX + width + offset > window.innerWidth
-      ? event.clientX - width - offset
-      : event.clientX + offset;
-    const y = event.clientY + height + offset > window.innerHeight
-      ? window.innerHeight - height - 12
-      : event.clientY + 12;
+    const x =
+      event.clientX + width + offset > window.innerWidth
+        ? event.clientX - width - offset
+        : event.clientX + offset;
+    const y =
+      event.clientY + height + offset > window.innerHeight
+        ? window.innerHeight - height - 12
+        : event.clientY + 12;
 
     setPreview({
       title,
@@ -52,9 +60,33 @@ export default function Certifications() {
           return (
             <article
               key={certificate.id}
-              className={previewLink ? "certification-row has-preview" : "certification-row"}
-              onMouseEnter={previewLink ? (event) => showPreview(event, certificate.title, previewLink, driveId) : undefined}
-              onMouseMove={previewLink ? (event) => showPreview(event, certificate.title, previewLink, driveId) : undefined}
+              className={
+                previewLink
+                  ? "certification-row has-preview"
+                  : "certification-row"
+              }
+              onMouseEnter={
+                previewLink
+                  ? (event) =>
+                      showPreview(
+                        event,
+                        certificate.title,
+                        previewLink,
+                        driveId,
+                      )
+                  : undefined
+              }
+              onMouseMove={
+                previewLink
+                  ? (event) =>
+                      showPreview(
+                        event,
+                        certificate.title,
+                        previewLink,
+                        driveId,
+                      )
+                  : undefined
+              }
               onMouseLeave={() => setPreview(null)}
             >
               <div>
@@ -89,9 +121,18 @@ export default function Certifications() {
           </div>
           <div className="certificate-preview-media">
             {preview.driveId ? (
-              <iframe src={preview.link} title={`${preview.title} preview`} loading="lazy" />
+              <iframe
+                src={preview.link}
+                title={`${preview.title} preview`}
+                loading="lazy"
+              />
             ) : (
-              <Image src={preview.link} alt={`${preview.title} certificate preview`} fill unoptimized />
+              <Image
+                src={preview.link}
+                alt={`${preview.title} certificate preview`}
+                fill
+                unoptimized
+              />
             )}
           </div>
         </div>

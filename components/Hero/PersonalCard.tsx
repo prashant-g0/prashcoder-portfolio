@@ -199,7 +199,10 @@ export default function PersonalCard() {
             aria-label="Expanded personal card"
           >
             {renderCard(true)}
-            <div className="expanded-card-toolbar" aria-label="Expanded card actions">
+            <div
+              className="expanded-card-toolbar"
+              aria-label="Expanded card actions"
+            >
               <a
                 href="/user/personal/card.png"
                 download="Prashant-Gupta-Card.png"

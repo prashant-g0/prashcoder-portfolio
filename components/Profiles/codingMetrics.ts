@@ -30,19 +30,24 @@ export function fetchDesktopCodingMetrics(): Promise<CodingMetricsResult> {
   if (metricsPromise) return metricsPromise;
 
   metricsPromise = Promise.all([
-    fetch("https://coding-profile-service-v2-0.onrender.com/stats?leetcode=prashantg-0&codechef=prashantg_0&gfg=mailprasu0t8&hackerrank=mail_prashantg0"),
+    fetch(
+      "https://coding-profile-service-v2-0.onrender.com/stats?leetcode=prashantg-0&codechef=prashantg_0&gfg=mailprasu0t8&hackerrank=mail_prashantg0",
+    ),
     fetch("https://api.github.com/users/prashant-g0"),
   ])
     .then(async ([codingResponse, githubResponse]) => {
       const profiles: Record<string, CodingProfileMetrics> = {};
 
       if (codingResponse.ok) {
-        const codingData = await codingResponse.json() as { profiles?: CodingProfileMetrics[] };
+        const codingData = (await codingResponse.json()) as {
+          profiles?: CodingProfileMetrics[];
+        };
         if (Array.isArray(codingData.profiles)) {
           for (const profile of codingData.profiles) {
             if (profile?.platform) {
               const platform = profile.platform.toLowerCase();
-              profiles[platform === "gfg" ? "geeksforgeeks" : platform] = profile;
+              profiles[platform === "gfg" ? "geeksforgeeks" : platform] =
+                profile;
             }
           }
         }
@@ -50,7 +55,7 @@ export function fetchDesktopCodingMetrics(): Promise<CodingMetricsResult> {
 
       let github: GitHubMetrics | null = null;
       if (githubResponse.ok) {
-        const data = await githubResponse.json() as {
+        const data = (await githubResponse.json()) as {
           login?: string;
           name?: string;
           avatar_url?: string;

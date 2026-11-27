@@ -59,7 +59,10 @@ export default async function WorkshopDetailPage({
           <p className="eyebrow">Session modules</p>
           <div className="workshop-lessons">
             {workshop.lessons.map((lesson) => (
-              <article key={lesson.module}><span>{String(lesson.module).padStart(2, "0")}</span><h2>{lesson.label}</h2></article>
+              <article key={lesson.module}>
+                <span>{String(lesson.module).padStart(2, "0")}</span>
+                <h2>{lesson.label}</h2>
+              </article>
             ))}
           </div>
         </section>
@@ -68,12 +71,21 @@ export default async function WorkshopDetailPage({
       <section className="workshop-detail-section">
         <p className="eyebrow">The journey</p>
         <div className="workshop-journey">
-          {([
-            ["Before", workshop.journey.preSession],
-            ["During", workshop.journey.live],
-            ["After", workshop.journey.postSession],
-          ] as const).map(([title, steps]) => (
-            <article key={title}><h2>{title}</h2><ul>{steps.map((step) => <li key={step}>{step}</li>)}</ul></article>
+          {(
+            [
+              ["Before", workshop.journey.preSession],
+              ["During", workshop.journey.live],
+              ["After", workshop.journey.postSession],
+            ] as const
+          ).map(([title, steps]) => (
+            <article key={title}>
+              <h2>{title}</h2>
+              <ul>
+                {steps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
       </section>
@@ -83,7 +95,10 @@ export default async function WorkshopDetailPage({
           <p className="eyebrow">Resources</p>
           <div className="workshop-resources">
             {workshop.resources.map((resource) => (
-              <article key={resource.label}><h2>{resource.label}</h2><p>{resource.description}</p></article>
+              <article key={resource.label}>
+                <h2>{resource.label}</h2>
+                <p>{resource.description}</p>
+              </article>
             ))}
           </div>
         </section>
@@ -92,7 +107,9 @@ export default async function WorkshopDetailPage({
       <div className="mt-14 grid gap-px border border-(--border) bg-(--border) md:grid-cols-3">
         {workshop.journey.live.map((step, index) => (
           <section key={step} className="bg-(--surface) p-7">
-            <p className="font-mono text-[10px] text-(--primary)">0{index + 1}</p>
+            <p className="font-mono text-[10px] text-(--primary)">
+              0{index + 1}
+            </p>
             <h2 className="mt-5 text-xl font-semibold">{step}</h2>
           </section>
         ))}

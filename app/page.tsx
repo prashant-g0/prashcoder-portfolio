@@ -1,12 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  DownloadIcon,
-  GitBranch,
-  // Sparkles,
-  // Users,
-  // Wrench,
-} from "lucide-react";
+import { ArrowUpRight, DownloadIcon, GitBranch } from "lucide-react";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import TestimonialMarquee from "@/components/workshop/TestimonialMarquee";
@@ -34,27 +27,6 @@ const mono = IBM_Plex_Mono({
 
 const workshops = prashWorkshops;
 
-// const approach = [
-//   {
-//     icon: Wrench,
-//     title: "Hands-on",
-//     description:
-//       "Less theory, more doing. Every workshop gives you something practical to work with.",
-//   },
-//   {
-//     icon: Users,
-//     title: "Learn together",
-//     description:
-//       "Ask questions, make mistakes, solve problems, and learn alongside others.",
-//   },
-//   {
-//     icon: Sparkles,
-//     title: "Stay curious",
-//     description:
-//       "The goal isn't to know everything. It's to leave knowing how to keep learning.",
-//   },
-// ];
-
 export default function Home() {
   return (
     <div
@@ -66,11 +38,6 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
             {/* Hero Content */}
             <div>
-              {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DEDFDA] bg-white px-3 py-1.5 font-mono text-[11px] text-[#565B60]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1F6F5C]" />
-                @prash.coder / developer
-              </div> */}
-
               <h1 className="hero-headline">
                 <span>Prashant Gupta</span>
                 <span className="hero-headline-fixed">Building as a</span>
@@ -200,36 +167,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Hero Meta */}
-          {/* <div className="mt-16 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-[#DEDFDA] pt-6 sm:grid-cols-3">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
-                Format
-              </p>
-              <p className="mt-2 text-sm font-medium text-[#16191C]">
-                Hands-on
-              </p>
-            </div>
-
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
-                Focus
-              </p>
-              <p className="mt-2 text-sm font-medium text-[#16191C]">
-                Practical skills
-              </p>
-            </div>
-
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-[#7A7F83]">
-                Philosophy
-              </p>
-              <p className="mt-2 text-sm font-medium text-[#16191C]">
-                Learn by doing
-              </p>
-            </div>
-          </div> */}
         </div>
       </section>
 
@@ -266,7 +203,9 @@ export default function Home() {
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {workshops.map((workshop, index) => {
-              const WorkshopIcon = workshopIcons[workshop.icon as keyof typeof workshopIcons] ?? FaGithub;
+              const WorkshopIcon =
+                workshopIcons[workshop.icon as keyof typeof workshopIcons] ??
+                FaGithub;
               return (
                 <article
                   key={workshop.title}
@@ -305,78 +244,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Approach */}
-      {/* <section className="border-y border-[#DEDFDA] bg-white">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-wider text-[#1F6F5C]">
-                The approach
-              </p>
-
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#16191C] sm:text-4xl">
-                Less watching.
-                <br />
-                <span className="text-[#1F6F5C]">More doing.</span>
-              </h2>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-3">
-              {approach.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-[#DEDFDA] bg-[#F6F6F3] p-6"
-                  >
-                    <Icon className="h-5 w-5 text-[#1F6F5C]" />
-
-                    <h3 className="mt-6 text-lg font-semibold text-[#16191C]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-[13px] leading-6 text-[#565B60]">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* Testimonials */}
       <TestimonialMarquee />
-
-      {/* CTA */}
-      {/* <section className="w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-2xl border border-[#C9DCD4] bg-[#E4EFEA]">
-            <div className="flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-12">
-              <div>
-                <h2 className="text-2xl font-semibold tracking-tight text-[#16191C] sm:text-3xl">
-                  Your next skill could start here.
-                </h2>
-
-                <p className="mt-3 max-w-xl text-[14px] leading-6 text-[#565B60]">
-                  Pick a workshop, bring your curiosity, and let&apos;s build
-                  something together.
-                </p>
-              </div>
-
-              <Link
-                href="/workshops"
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#1F6F5C] px-5 py-3 font-mono text-[12px] font-medium text-white transition hover:bg-[#195A4A]"
-              >
-                Join the next workshop
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </div>
   );
 }
